@@ -1,0 +1,1602 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+<meta charset="UTF-8">
+<title>INFOGGAMERS</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+font-family:Poppins;
+
+background-image:
+linear-gradient(rgba(10,0,20,0.8),rgba(10,0,20,0.9)),
+url("https://images.unsplash.com/photo-1462331940025-496dfbfc7564");
+
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+
+color:white;
+}
+
+header{
+display:flex;
+flex-direction:column;
+align-items:center;
+padding:40px;
+}
+
+.logo{
+width:220px;
+margin-bottom:20px;
+}
+
+.pesquisa{
+width:300px;
+padding:10px;
+border-radius:20px;
+border:none;
+background:#2b004d;
+color:white;
+text-align:center;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:25px;
+padding:40px;
+}
+
+.card{
+background:rgba(26,0,51,0.8);
+border-radius:12px;
+overflow:hidden;
+cursor:pointer;
+transition:0.3s;
+}
+
+.card:hover{
+transform:scale(1.05);
+}
+
+.card img{
+width:100%;
+height:250px;
+object-fit:cover;
+}
+
+.card h3{
+margin:10px;
+}
+
+.card p{
+margin:10px;
+color:#ccc;
+}
+
+.jogo{
+display:none;
+padding:40px;
+max-width:1200px;
+margin:auto;
+}
+
+.banner{
+width:100%;
+height:520px;
+object-fit:cover;
+border-radius:12px;
+box-shadow:0 0 40px #7b00ff;
+}
+
+.caixa{
+background:rgba(26,0,51,0.8);
+padding:20px;
+border-radius:10px;
+margin-top:20px;
+}
+
+.voltarTopo{
+position:fixed;
+top:20px;
+left:20px;
+width:50px;
+height:50px;
+border-radius:50%;
+background:#7b00ff;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:30px;
+cursor:pointer;
+box-shadow:0 0 15px #7b00ff;
+z-index:999;
+}
+
+.trailer{
+width:100%;
+height:500px;
+border:none;
+border-radius:10px;
+}
+
+.galeria{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px;
+}
+
+.galeria img{
+width:100%;
+border-radius:10px;
+}
+
+footer{
+text-align:center;
+padding:30px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<img src="https://i.postimg.cc/NjwRNmKq/Chat-GPT-Image-5-de-mar-de-2026-21-18-40.png" class="logo">
+
+<input type="text" placeholder="Pesquisar jogo..." id="barraPesquisa" class="pesquisa" onkeyup="buscar(this.value)">
+
+</header>
+
+<div class="grid" id="listaJogos"></div>
+
+<div class="jogo" id="paginaJogo">
+
+<div class="voltarTopo" onclick="voltar()"><</div>
+
+<img id="imgJogo" class="banner">
+
+<h1 id="nomeJogo"></h1>
+<p id="notaJogo"></p>
+
+<div class="caixa">
+<h2>Descrição</h2>
+<p id="descJogo"></p>
+</div>
+
+<div class="caixa">
+<h2>Trailer</h2>
+<iframe id="trailerJogo" class="trailer" allowfullscreen></iframe>
+</div>
+
+<div class="caixa">
+<h2>Informações</h2>
+<ul id="infoJogo"></ul>
+</div>
+
+<div class="caixa">
+<h2>Galeria</h2>
+<div id="galeriaJogo" class="galeria"></div>
+</div>
+
+<div class="caixa">
+<h2>Dicas</h2>
+<ul id="listaDicas"></ul>
+</div>
+
+<div class="caixa">
+<h2>Requisitos mínimos</h2>
+<ul id="reqMin"></ul>
+</div>
+
+<div class="caixa">
+<h2>Requisitos recomendados</h2>
+<ul id="reqRec"></ul>
+</div>
+
+<div class="caixa">
+<h2>Curiosidades</h2>
+<ul id="curiosidades"></ul>
+</div>
+
+<div class="caixa">
+<h2>Jogos semelhantes</h2>
+<div id="semelhantes" class="grid"></div>
+</div>
+
+</div>
+
+<footer>
+INFOGGAMERS © 2026 by gujob
+</footer>
+
+<script>
+
+let jogos=[
+
+{
+nome:"Red Dead Redemption 2",
+nota:"⭐ 9.8 | 2018",
+desc:"Red Dead Redemption 2 leva você para o final da era do Velho Oeste em um mundo aberto gigantesco cheio de detalhes e histórias. Você joga como Arthur Morgan, um fora da lei membro da gangue Van der Linde, enquanto tenta sobreviver em um mundo que está mudando rapidamente. Entre assaltos, caçadas, perseguições a cavalo e encontros inesperados pelo mapa, o jogo entrega uma das experiências mais imersivas já criadas.",
+capa:"https://i.postimg.cc/d3yT6VvJ/download-(5).jpg",
+banner:"https://i.postimg.cc/W1277CWg/rdr2-banner.webp",
+trailer:"https://www.youtube.com/embed/eaW0tYpxyp0",
+dicas:[
+"Explore o mapa com calma para encontrar eventos aleatórios.",
+"Caçar animais lendários garante equipamentos únicos.",
+"Melhore o acampamento para desbloquear upgrades úteis.",
+"Sempre cuide do cavalo para melhorar desempenho."
+],
+info:[
+"Estúdio: Rockstar Games",
+"Gênero: Ação / Aventura / Mundo aberto",
+"Modo: Singleplayer / Online",
+"Plataformas: PC, PlayStation, Xbox"
+],
+galeria:[
+"https://i.postimg.cc/Qtv0hkpf/download-(37).jpg",
+"https://i.postimg.cc/RCngGymq/images-(3).jpg",
+"https://i.postimg.cc/4NkB0P46/download-(36).jpg"
+],
+min:[
+"CPU: Intel i5 2500K",
+"RAM: 8GB",
+"GPU: GTX 770",
+"Espaço: 150GB"
+],
+rec:[
+"CPU: Intel i7 4770K",
+"RAM: 12GB",
+"GPU: GTX 1060",
+"Espaço: 150GB"
+],
+cur:[
+"O desenvolvimento levou mais de 8 anos.",
+"O nível de detalhe do mundo é um dos maiores já feitos."
+],
+semelhantes:["GTA V","Far Cry 3","Skyrim"]
+},
+
+{
+nome:"Minecraft",
+nota:"⭐ 9.0 | 2011",
+desc:"Minecraft é um sandbox onde a criatividade é o limite. Em um mundo feito de blocos gerado proceduralmente, você pode construir cidades gigantes, explorar cavernas profundas, enfrentar monstros ou simplesmente criar qualquer coisa que imaginar.",
+capa:"https://i.postimg.cc/qRgJcDrF/download-(3).jpg",
+banner:"https://i.postimg.cc/qRmg3jm8/minecraft-1920-x-1080-background-7nlzxzrjiw6rz8qs.jpg",
+trailer:"https://www.youtube.com/embed/MmB9b5njVbA",
+dicas:[
+"Construa abrigo antes da primeira noite.",
+"Minere profundamente para encontrar diamantes.",
+"Crie fazendas para garantir comida infinita."
+],
+info:[
+"Estúdio: Mojang",
+"Gênero: Sandbox / Sobrevivência",
+"Modo: Singleplayer / Multiplayer",
+"Plataformas: PC, Console, Mobile"
+],
+galeria:[
+"https://i.postimg.cc/LsK9Yrmn/images-(4).jpg",
+"https://i.postimg.cc/7ZTPLx8Q/images-(5).jpg",
+"https://i.postimg.cc/X7P73rhc/images-(6).jpg"
+],
+min:["CPU: Intel i3","RAM: 4GB","GPU: Integrada"],
+rec:["CPU: Intel i5","RAM: 8GB","GPU: GTX 750"],
+cur:[
+"É o jogo mais vendido da história.",
+"Alguns servidores possuem milhares de jogadores simultâneos."
+],
+semelhantes:["Subnautica","Skyrim","Zelda BOTW"]
+},
+
+{
+nome:"GTA V",
+nota:"⭐ 9.7 | 2013",
+desc:"Grand Theft Auto V coloca você na enorme cidade de Los Santos, onde crime, dinheiro e poder estão em todos os lugares. A história acompanha três protagonistas com vidas diferentes que acabam envolvidos em grandes assaltos.",
+capa:"https://i.postimg.cc/tCcPfCNh/download.png",
+banner:"https://i.postimg.cc/L68BwWKH/gta-5-1920x1080-wele1z8lanjgq3kb.jpg",
+trailer:"https://www.youtube.com/embed/QkkoHAzjnUs",
+dicas:[
+"Explore o mapa para encontrar segredos escondidos.",
+"Invista na bolsa dentro do jogo.",
+"Missões secundárias rendem dinheiro e habilidades."
+],
+info:[
+"Estúdio: Rockstar Games",
+"Gênero: Ação / Mundo aberto",
+"Modo: Singleplayer / Online",
+"Plataformas: PC, PlayStation, Xbox"
+],
+galeria:[
+"https://i.postimg.cc/nhV5d2TX/images-(7).jpg",
+"https://i.postimg.cc/wjWrnNbr/download-(39).jpg",
+"https://i.postimg.cc/6QyPKQkZ/download-(38).jpg"
+],
+min:["CPU: Intel i5","RAM: 8GB","GPU: GTX 660"],
+rec:["CPU: Intel i7","RAM: 16GB","GPU: GTX 1060"],
+cur:[
+"GTA V já vendeu mais de 180 milhões de cópias.",
+"O mapa é inspirado em Los Angeles."
+],
+semelhantes:["Red Dead Redemption 2","Cyberpunk 2077","Far Cry 3"]
+},
+
+{
+nome:"Rainbow Six Siege",
+nota:"⭐ 9.0 | 2015",
+desc:"Rainbow Six Siege é um shooter tático focado em estratégia e trabalho em equipe. Jogadores usam operadores especiais com habilidades únicas.",
+capa:"https://i.postimg.cc/hG6GZwqY/download-(46).jpg",
+banner:"https://i.postimg.cc/W1DLY4bL/download-(50).jpg",
+trailer:"https://www.youtube.com/embed/6wlvYh0h63k",
+dicas:[
+"Use drones para localizar inimigos.",
+"Jogue sempre em equipe.",
+"Use operadores diferentes dependendo do mapa."
+],
+info:[
+"Estúdio: Ubisoft",
+"Gênero: FPS Tático",
+"Modo: Multiplayer",
+"Plataformas: PC, PlayStation, Xbox"
+],
+galeria:[
+"https://i.postimg.cc/R0kMLH70/download-(48).jpg",
+"https://i.postimg.cc/GtqwV8yh/rainbow-six-siege-08.jpg",
+"https://i.postimg.cc/PJ4THVBj/download-(49).jpg"
+],
+min:["CPU: Intel i5","RAM: 8GB","GPU: GTX 960"],
+rec:["CPU: Intel i7","RAM: 16GB","GPU: RTX 2060"],
+cur:[
+"Um dos FPS competitivos mais populares."
+],
+semelhantes:["Valorant","Counter-Strike 2","Halo Infinite"]
+},
+
+{
+nome:"The Witcher 3",
+nota:"⭐ 9.6 | 2015",
+desc:"Você assume o papel de Geralt de Rívia, um caçador de monstros profissional em um mundo devastado por guerras e criaturas perigosas. Durante sua jornada, Geralt precisa encontrar Ciri enquanto enfrenta inimigos poderosos.",
+capa:"https://i.postimg.cc/C1DD0srd/3f7ee6aa3482b514bd443e116022b038a9728f017916ed37da3f09f731a7d5f2.avif",
+banner:"https://i.postimg.cc/SsKxkcyX/the-witcher-3-wallpaper-6k59j1ddxvf3vk3j.jpg",
+trailer:"https://www.youtube.com/embed/c0i88t0Kacs",
+dicas:[
+"Prepare poções antes de enfrentar monstros.",
+"Faça missões secundárias para ganhar dinheiro.",
+"Explore vilas para contratos de monstros."
+],
+info:[
+"Estúdio: CD Projekt Red",
+"Gênero: RPG / Mundo aberto",
+"Modo: Singleplayer",
+"Plataformas: PC, PlayStation, Xbox, Switch"
+],
+galeria:[
+"https://picsum.photos/seed/w31/500/300",
+"https://picsum.photos/seed/w32/500/300",
+"https://picsum.photos/seed/w33/500/300"
+],
+min:["CPU: Intel i5","RAM: 6GB","GPU: GTX 660"],
+rec:["CPU: Intel i7","RAM: 16GB","GPU: GTX 1070"],
+cur:["Ganhou mais de 250 prêmios de jogo do ano."],
+semelhantes:["Skyrim","Elden Ring","Assassin's Creed Valhalla"]
+},
+
+{
+nome:"Elden Ring",
+nota:"⭐ 9.6 | 2022",
+desc:"Elden Ring é um RPG de ação em mundo aberto desenvolvido pela FromSoftware. O jogo coloca você em um reino destruído cheio de monstros gigantes e chefes épicos.",
+capa:"https://i.postimg.cc/13tqXQ7W/a-Ghopp3MHppi7koo-GE2Dtt8C.avif",
+banner:"https://i.postimg.cc/nLFHGqQh/wp15909881.jpg",
+trailer:"https://www.youtube.com/embed/E3Huy2cdih0",
+dicas:[
+"Explore o mapa antes de enfrentar chefes.",
+"Use invocações para ajudar nas batalhas.",
+"Melhore suas armas regularmente."
+],
+info:[
+"Estúdio: FromSoftware",
+"Gênero: RPG / Soulslike",
+"Modo: Singleplayer / Online",
+"Plataformas: PC, PlayStation, Xbox"
+],
+galeria:[
+"https://picsum.photos/seed/er1/500/300",
+"https://picsum.photos/seed/er2/500/300",
+"https://picsum.photos/seed/er3/500/300"
+],
+min:["CPU: Intel i5","RAM: 12GB","GPU: GTX 1060"],
+rec:["CPU: Intel i7","RAM: 16GB","GPU: RTX 2070"],
+cur:["A história teve colaboração de George R. R. Martin."],
+semelhantes:["Dark Souls 3","Skyrim","The Witcher 3"]
+},
+
+{
+nome:"God of War",
+nota:"⭐ 9.8 | 2018",
+desc:"God of War acompanha Kratos em uma nova fase de sua vida na mitologia nórdica ao lado de seu filho Atreus. O jogo mistura combate brutal, puzzles e uma narrativa emocionante.",
+capa:"https://i.postimg.cc/sfWdFGVt/download-(9).jpg",
+banner:"https://i.postimg.cc/c4TZ4rbM/download-(45).jpg",
+trailer:"https://www.youtube.com/embed/K0u_kAWLJOA",
+dicas:[
+"Explore áreas opcionais para encontrar equipamentos.",
+"Use o machado Leviatã estrategicamente.",
+"Melhore habilidades de Kratos e Atreus."
+],
+info:[
+"Estúdio: Santa Monica Studio",
+"Gênero: Ação / Aventura",
+"Modo: Singleplayer",
+"Plataformas: PC, PlayStation"
+],
+galeria:[
+"https://picsum.photos/seed/gow1/500/300",
+"https://picsum.photos/seed/gow2/500/300",
+"https://picsum.photos/seed/gow3/500/300"
+],
+min:["CPU: Intel i5","RAM: 8GB","GPU: GTX 960"],
+rec:["CPU: Intel i7","RAM: 16GB","GPU: GTX 1070"],
+cur:["Venceu o prêmio de Jogo do Ano em 2018."],
+semelhantes:["Horizon Forbidden West","Elden Ring","Assassin's Creed Valhalla"]
+},
+
+{
+nome:"Far Cry 3",
+nota:"⭐ 9.4 | 2012",
+desc:"Far Cry 3 coloca você em uma ilha dominada por piratas perigosos. Para sobreviver, você precisa explorar o ambiente, capturar bases inimigas e enfrentar o icônico vilão Vaas.",
+capa:"https://i.postimg.cc/6qJP6z9b/download-(11).jpg",
+banner:"https://i.postimg.cc/fycrVXyW/download-(10).jpg",
+trailer:"https://www.youtube.com/embed/J6gnOVJsCsM",
+dicas:[
+"Capture torres para revelar o mapa.",
+"Cace animais para melhorar equipamentos.",
+"Use furtividade sempre que possível."
+],
+info:[
+"Estúdio: Ubisoft",
+"Gênero: FPS / Mundo aberto",
+"Modo: Singleplayer",
+"Plataformas: PC, PlayStation, Xbox"
+],
+galeria:[
+"https://picsum.photos/seed/fc1/500/300",
+"https://picsum.photos/seed/fc2/500/300",
+"https://picsum.photos/seed/fc3/500/300"
+],
+min:["CPU: Intel i3","RAM: 4GB","GPU: GTX 460"],
+rec:["CPU: Intel i5","RAM: 8GB","GPU: GTX 760"],
+cur:["O vilão Vaas virou um dos personagens mais famosos dos games."],
+semelhantes:["GTA V","Red Dead Redemption 2","Battlefield 6"]
+},
+
+{
+nome:"Subnautica",
+nota:"⭐ 9.2 | 2018",
+desc:"Subnautica é um jogo de sobrevivência em um planeta oceânico alienígena. Após um acidente, você precisa explorar mares profundos, construir bases submarinas e descobrir mistérios escondidos nas profundezas.",
+capa:"https://i.postimg.cc/wTRn8TnK/subnautica.jpg",
+banner:"https://i.postimg.cc/zvB2t6L4/subnautica-banner.jpg",
+trailer:"https://www.youtube.com/embed/Rz2SNm8VguE",
+dicas:[
+"Gerencie bem o oxigênio.",
+"Construa bases submarinas.",
+"Explore cavernas profundas."
+],
+info:[
+"Estúdio: Unknown Worlds",
+"Gênero: Sobrevivência / Exploração",
+"Modo: Singleplayer",
+"Plataformas: PC, PlayStation, Xbox"
+],
+galeria:[
+"https://picsum.photos/seed/sub1/500/300",
+"https://picsum.photos/seed/sub2/500/300",
+"https://picsum.photos/seed/sub3/500/300"
+],
+min:["CPU: Intel i5","RAM: 8GB","GPU: GTX 760"],
+rec:["CPU: Intel i7","RAM: 16GB","GPU: GTX 1060"],
+cur:["Considerado um dos melhores jogos de exploração oceânica."],
+semelhantes:["Minecraft","Skyrim","Zelda BOTW"]
+},
+
+{
+nome:"Cyberpunk 2077",
+nota:"⭐ 8.8 | 2020",
+desc:"Cyberpunk 2077 leva você para Night City, uma metrópole futurista dominada por tecnologia, corporações e mercenários.",
+capa:"https://i.postimg.cc/c1R9MR1v/download-(13).jpg",
+banner:"https://i.postimg.cc/xTg6B9b4/download-(14).jpg",
+trailer:"https://www.youtube.com/embed/LembwKDo1Dk",
+dicas:[
+"Melhore implantes cibernéticos.",
+"Faça side quests para ganhar dinheiro.",
+"Explore todos os distritos da cidade."
+],
+info:[
+"Estúdio: CD Projekt Red",
+"Gênero: RPG / Mundo aberto",
+"Modo: Singleplayer",
+"Plataformas: PC, PlayStation, Xbox"
+],
+galeria:[
+"https://picsum.photos/seed/cp1/500/300",
+"https://picsum.photos/seed/cp2/500/300",
+"https://picsum.photos/seed/cp3/500/300"
+],
+min:["CPU: Intel i5","RAM: 8GB","GPU: GTX 780"],
+rec:["CPU: Intel i7","RAM: 16GB","GPU: RTX 2060"],
+cur:["Night City é uma das cidades mais detalhadas já feitas em jogos."],
+semelhantes:["GTA V","The Witcher 3","Halo Infinite"]
+},
+
+{
+nome:"Zelda BOTW",
+nota:"⭐ 9.7 | 2017",
+desc:"The Legend of Zelda: Breath of the Wild revolucionou os jogos de mundo aberto ao dar ao jogador liberdade total para explorar o reino de Hyrule. Você controla Link, que desperta após cem anos de sono para derrotar Calamity Ganon e salvar o reino. O jogo permite escalar montanhas, planar pelo mapa, resolver puzzles em templos e enfrentar inimigos de inúmeras formas. Cada região possui clima, inimigos e desafios diferentes, tornando a exploração extremamente recompensadora.",
+capa:"https://i.postimg.cc/7PNvY82s/download-(15).jpg",
+banner:"https://i.postimg.cc/wjZZb9Cp/download-(16).jpg",
+trailer:"https://www.youtube.com/embed/zw47_q9wbBE",
+dicas:[
+"Use o ambiente a seu favor, como empurrar pedras ou usar fogo contra inimigos.",
+"Cozinhar ingredientes diferentes cria comidas que aumentam vida e resistência.",
+"Explore torres para revelar novas áreas do mapa.",
+"Armas quebram com o uso, então sempre carregue várias."
+],
+info:[
+"Estúdio: Nintendo",
+"Gênero: Ação / Aventura / Mundo aberto",
+"Modo: Singleplayer",
+"Plataformas: Nintendo Switch, Wii U"
+],
+galeria:[
+"https://picsum.photos/seed/z1/500/300",
+"https://picsum.photos/seed/z2/500/300",
+"https://picsum.photos/seed/z3/500/300"
+],
+min:["Nintendo Switch"],
+rec:["Nintendo Switch"],
+cur:[
+"Ganhou diversos prêmios de Jogo do Ano em 2017.",
+"O jogo permite resolver puzzles de várias formas diferentes."
+],
+semelhantes:["Skyrim","Horizon Forbidden West","Minecraft"]
+},
+
+{
+nome:"Resident Evil 4",
+nota:"⭐ 9.6 | 2005",
+desc:"Resident Evil 4 é um dos jogos mais influentes da história do survival horror. Você controla Leon S. Kennedy em uma missão para resgatar a filha do presidente dos Estados Unidos em uma vila isolada da Europa. O jogo mistura ação intensa, gerenciamento de recursos e momentos de tensão constantes enquanto você enfrenta inimigos perigosos e criaturas mutantes.",
+capa:"https://i.postimg.cc/QCfngDQz/download-(17).jpg",
+banner:"https://i.postimg.cc/HWzK1wqt/download-(18).jpg",
+trailer:"https://www.youtube.com/embed/4xuXkVzBdJQ",
+dicas:[
+"Economize munição sempre que possível.",
+"Use a faca para finalizar inimigos caídos.",
+"Explore todas as áreas para encontrar tesouros escondidos.",
+"Melhore suas armas com o mercador."
+],
+info:[
+"Estúdio: Capcom",
+"Gênero: Survival Horror / Ação",
+"Modo: Singleplayer",
+"Plataformas: PC, PlayStation, Xbox, Nintendo"
+],
+galeria:[
+"https://picsum.photos/seed/re41/500/300",
+"https://picsum.photos/seed/re42/500/300",
+"https://picsum.photos/seed/re43/500/300"
+],
+min:["CPU: Intel i5","RAM: 8GB","GPU: GTX 1050"],
+rec:["CPU: Intel i7","RAM: 16GB","GPU: RTX 2060"],
+cur:[
+"Revolucionou o gênero survival horror.",
+"A câmera por cima do ombro virou padrão em muitos jogos."
+],
+semelhantes:["The Last of Us","Dark Souls 3","Far Cry 3"]
+},
+
+{
+nome:"Dark Souls 3",
+nota:"⭐ 9.5 | 2016",
+desc:"Dark Souls 3 é um RPG de ação extremamente desafiador que coloca o jogador em um mundo sombrio cheio de criaturas perigosas e chefes memoráveis. A exploração, o combate preciso e a narrativa indireta fazem dele um dos jogos mais marcantes da série Souls.",
+capa:"https://i.postimg.cc/zXPcVJXt/download-(19).jpg",
+banner:"https://i.postimg.cc/qvPDxjKs/download-(20).jpg",
+trailer:"https://www.youtube.com/embed/cWBwFhUv1-8",
+dicas:[
+"Aprenda os padrões de ataque dos chefes.",
+"Gerencie sua estamina com cuidado.",
+"Use escudos ou esquivas dependendo do inimigo.",
+"Explore áreas secretas para encontrar equipamentos."
+],
+info:[
+"Estúdio: FromSoftware",
+"Gênero: RPG / Soulslike",
+"Modo: Singleplayer / Online",
+"Plataformas: PC, PlayStation, Xbox"
+],
+galeria:[
+"https://picsum.photos/seed/ds1/500/300",
+"https://picsum.photos/seed/ds2/500/300",
+"https://picsum.photos/seed/ds3/500/300"
+],
+min:["CPU: Intel i5","RAM: 8GB","GPU: GTX 750"],
+rec:["CPU: Intel i7","RAM: 16GB","GPU: GTX 1060"],
+cur:[
+"Conhecido por sua dificuldade elevada.",
+"A série Souls inspirou diversos jogos modernos."
+],
+semelhantes:["Elden Ring","Skyrim","The Witcher 3"]
+},
+
+{
+nome:"Assassin's Creed Valhalla",
+nota:"⭐ 8.9 | 2020",
+desc:"Assassin's Creed Valhalla coloca você na pele de Eivor, um guerreiro viking que lidera seu clã para conquistar terras na Inglaterra medieval. O jogo combina exploração em mundo aberto, combates brutais e decisões que influenciam a história.",
+capa:"https://i.postimg.cc/JhCKktwB/download-(21).jpg",
+banner:"https://i.postimg.cc/bNd6XKHb/images-(2).jpg",
+trailer:"https://www.youtube.com/embed/ssrNcwxALS4",
+dicas:[
+"Invada fortalezas para ganhar recursos.",
+"Melhore sua vila para desbloquear novas habilidades.",
+"Explore rios e cidades para encontrar equipamentos raros.",
+"Use armas diferentes para variar o estilo de combate."
+],
+info:[
+"Estúdio: Ubisoft",
+"Gênero: RPG / Mundo aberto",
+"Modo: Singleplayer",
+"Plataformas: PC, PlayStation, Xbox"
+],
+galeria:[
+"https://picsum.photos/seed/ac1/500/300",
+"https://picsum.photos/seed/ac2/500/300",
+"https://picsum.photos/seed/ac3/500/300"
+],
+min:["CPU: Intel i5","RAM: 8GB","GPU: GTX 960"],
+rec:["CPU: Intel i7","RAM: 16GB","GPU: RTX 2070"],
+cur:[
+"O jogo se passa durante a invasão viking da Inglaterra.",
+"O mapa inclui regiões gigantes para explorar."
+],
+semelhantes:["The Witcher 3","Skyrim","God of War"]
+},
+
+{
+nome:"Halo Infinite",
+nota:"⭐ 8.7 | 2021",
+desc:"Halo Infinite marca o retorno de Master Chief em uma nova aventura contra a facção Banished. O jogo apresenta uma campanha com mundo semi-aberto e um multiplayer competitivo que mantém a essência clássica da série Halo.",
+capa:"https://i.postimg.cc/bYVTRmc8/download-(23).jpg",
+banner:"https://i.postimg.cc/sxL4Dg9B/download-(22).jpg",
+trailer:"https://www.youtube.com/embed/PyMlV5_HRWk",
+dicas:[
+"Use o gancho para mobilidade e combate.",
+"Capture bases inimigas para obter equipamentos.",
+"Use diferentes armas dependendo do inimigo.",
+"Explore o mapa para encontrar melhorias."
+],
+info:[
+"Estúdio: 343 Industries",
+"Gênero: FPS",
+"Modo: Singleplayer / Multiplayer",
+"Plataformas: PC, Xbox"
+],
+galeria:[
+"https://picsum.photos/seed/h1/500/300",
+"https://picsum.photos/seed/h2/500/300",
+"https://picsum.photos/seed/h3/500/300"
+],
+min:["CPU: Intel i5","RAM: 8GB","GPU: GTX 1050"],
+rec:["CPU: Intel i7","RAM: 16GB","GPU: RTX 2070"],
+cur:[
+"Primeiro Halo com mapa semi aberto.",
+"O multiplayer é gratuito."
+],
+semelhantes:["Battlefield 6","Cyberpunk 2077","Far Cry 3"]
+},
+
+{
+nome:"Spider-Man",
+nota:"⭐ 9.4 | 2018",
+desc:"Marvel's Spider-Man coloca você no papel do Homem-Aranha em uma Nova York enorme e cheia de vida. Balance pelos prédios da cidade, enfrente vilões icônicos e acompanhe uma história emocionante protagonizada por Peter Parker.",
+capa:"https://i.postimg.cc/hvXVwqWn/download-(24).jpg",
+banner:"https://i.postimg.cc/054YSrDr/download-(25).jpg",
+trailer:"https://www.youtube.com/embed/q4GdJVvdxss",
+dicas:[
+"Use ataques aéreos para combos mais fortes.",
+"Explore a cidade para encontrar mochilas escondidas.",
+"Melhore gadgets para facilitar combates.",
+"Complete desafios para desbloquear habilidades."
+],
+info:[
+"Estúdio: Insomniac Games",
+"Gênero: Ação / Mundo aberto",
+"Modo: Singleplayer",
+"Plataformas: PC, PlayStation"
+],
+galeria:[
+"https://picsum.photos/seed/sp1/500/300",
+"https://picsum.photos/seed/sp2/500/300",
+"https://picsum.photos/seed/sp3/500/300"
+],
+min:["CPU: Intel i5","RAM: 8GB","GPU: GTX 950"],
+rec:["CPU: Intel i7","RAM: 16GB","GPU: RTX 2060"],
+cur:[
+"Considerado um dos melhores jogos de super-herói.",
+"A cidade possui centenas de atividades."
+],
+semelhantes:["Cyberpunk 2077","GTA V","The Last of Us"]
+},
+
+{
+nome:"Forza Horizon 5",
+nota:"⭐ 9.3 | 2021",
+desc:"Forza Horizon 5 é um jogo de corrida em mundo aberto ambientado no México. O jogo oferece centenas de carros e paisagens incríveis para explorar enquanto participa de eventos, corridas e desafios.",
+capa:"https://i.postimg.cc/jCVnFw4N/download-(26).jpg",
+banner:"https://i.postimg.cc/jqD8mphq/download-(27).jpg",
+trailer:"https://www.youtube.com/embed/FYH9n37B7Yw",
+dicas:[
+"Explore o mapa para descobrir corridas secretas.",
+"Colecione carros para expandir sua garagem.",
+"Use ajustes de carro para melhorar desempenho.",
+"Complete desafios sazonais."
+],
+info:[
+"Estúdio: Playground Games",
+"Gênero: Corrida / Mundo aberto",
+"Modo: Singleplayer / Multiplayer",
+"Plataformas: PC, Xbox"
+],
+galeria:[
+"https://picsum.photos/seed/fh1/500/300",
+"https://picsum.photos/seed/fh2/500/300",
+"https://picsum.photos/seed/fh3/500/300"
+],
+min:["CPU: Intel i5","RAM: 8GB","GPU: GTX 970"],
+rec:["CPU: Intel i7","RAM: 16GB","GPU: RTX 2070"],
+cur:[
+"O mapa é inspirado em paisagens reais do México.",
+"O jogo possui mais de 500 carros."
+],
+semelhantes:["GTA V","Cyberpunk 2077","Battlefield 6"]
+},
+
+{
+nome:"The Last of Us",
+nota:"⭐ 9.8 | 2013",
+desc:"The Last of Us conta a emocionante jornada de Joel e Ellie em um mundo devastado por uma pandemia. Misturando ação, stealth e narrativa profunda, o jogo se tornou um dos títulos mais marcantes da história.",
+capa:"https://i.postimg.cc/J4bQWMHk/download-(28).jpg",
+banner:"https://i.postimg.cc/RZdQNdTQ/download-(29).jpg",
+trailer:"https://www.youtube.com/embed/W01L70IGBgE",
+dicas:[
+"Use stealth para evitar confrontos.",
+"Economize munição sempre que possível.",
+"Explore casas abandonadas.",
+"Use garrafas e tijolos para distrair inimigos."
+],
+info:[
+"Estúdio: Naughty Dog",
+"Gênero: Ação / Sobrevivência",
+"Modo: Singleplayer",
+"Plataformas: PC, PlayStation"
+],
+galeria:[
+"https://picsum.photos/seed/tlou1/500/300",
+"https://picsum.photos/seed/tlou2/500/300",
+"https://picsum.photos/seed/tlou3/500/300"
+],
+min:["CPU: Intel i5","RAM: 8GB","GPU: GTX 970"],
+rec:["CPU: Intel i7","RAM: 16GB","GPU: RTX 2070"],
+cur:[
+"Considerado um dos jogos mais emocionantes da história.",
+"A narrativa recebeu diversos prêmios."
+],
+semelhantes:["Resident Evil 4","Horizon Forbidden West","God of War"]
+},
+
+{
+nome:"Horizon Forbidden West",
+nota:"⭐ 9.0 | 2022",
+desc:"Horizon Forbidden West continua a jornada de Aloy em um mundo dominado por máquinas gigantes. Explore florestas, desertos e cidades antigas enquanto descobre segredos de uma civilização perdida.",
+capa:"https://i.postimg.cc/cHgQkSNq/download-(30).jpg",
+banner:"https://i.postimg.cc/26snPKzx/download-(31).jpg",
+trailer:"https://www.youtube.com/embed/Lq594XmpPBg",
+dicas:[
+"Use armas elementais contra máquinas.",
+"Explore ruínas antigas para encontrar melhorias.",
+"Estude o comportamento das máquinas.",
+"Use furtividade para derrotar inimigos fortes."
+],
+info:[
+"Estúdio: Guerrilla Games",
+"Gênero: RPG / Mundo aberto",
+"Modo: Singleplayer",
+"Plataformas: PlayStation"
+],
+galeria:[
+"https://picsum.photos/seed/hz1/500/300",
+"https://picsum.photos/seed/hz2/500/300",
+"https://picsum.photos/seed/hz3/500/300"
+],
+min:["CPU: Intel i5","RAM: 8GB","GPU: GTX 1060"],
+rec:["CPU: Intel i7","RAM: 16GB","GPU: RTX 2070"],
+cur:[
+"O jogo possui dezenas de máquinas diferentes.",
+"O mapa é muito maior que o do primeiro jogo."
+],
+semelhantes:["God of War","Zelda BOTW","The Last of Us"]
+},
+
+{
+nome:"Battlefield 6",
+nota:"⭐ 9.1 | 2025",
+desc:"Battlefield 6 traz batalhas modernas massivas com mapas gigantes e destruição dinâmica. O jogo foca em combates multiplayer com veículos, aviões e equipes trabalhando juntas para conquistar objetivos.",
+capa:"https://i.postimg.cc/yYVDkHrW/download-(32).jpg",
+banner:"https://i.postimg.cc/d1P1vPyh/download-(33).jpg",
+trailer:"https://www.youtube.com/embed/ASzOzrB-a9E",
+dicas:[
+"Jogue sempre em equipe.",
+"Use veículos para dominar o campo de batalha.",
+"Controle objetivos para vencer partidas.",
+"Use cobertura constantemente."
+],
+info:[
+"Estúdio: EA DICE",
+"Gênero: FPS / Guerra",
+"Modo: Multiplayer",
+"Plataformas: PC, PlayStation, Xbox"
+],
+galeria:[
+"https://picsum.photos/seed/bf1/500/300",
+"https://picsum.photos/seed/bf2/500/300",
+"https://picsum.photos/seed/bf3/500/300"
+],
+min:["CPU: Intel i5","RAM: 8GB","GPU: GTX 1060"],
+rec:["CPU: Intel i7","RAM: 16GB","GPU: RTX 2070"],
+cur:[
+"Os mapas possuem destruição dinâmica.",
+"As partidas podem ter dezenas de jogadores."
+],
+semelhantes:["Halo Infinite","Far Cry 3","GTA V"]
+},
+
+{
+nome:"Skyrim",
+nota:"⭐ 9.7 | 2011",
+desc:"The Elder Scrolls V: Skyrim é um dos RPGs mais influentes já criados. Você assume o papel do Dragonborn, um herói capaz de enfrentar dragões e decidir o destino da província de Skyrim em um enorme mundo aberto cheio de aventuras.",
+capa:"https://i.postimg.cc/yYYN7Tk3/download-(34).jpg",
+banner:"https://i.postimg.cc/MTSWN7Cv/download-(35).jpg",
+trailer:"https://www.youtube.com/embed/JSRtYpNRoN0",
+dicas:[
+"Explore cavernas e ruínas antigas.",
+"Entre em guildas para desbloquear missões únicas.",
+"Combine magia e armas.",
+"Use gritos de dragão em combate."
+],
+info:[
+"Estúdio: Bethesda Game Studios",
+"Gênero: RPG / Mundo aberto",
+"Modo: Singleplayer",
+"Plataformas: PC, PlayStation, Xbox, Nintendo Switch"
+],
+galeria:[
+"https://picsum.photos/seed/skyrim1/500/300",
+"https://picsum.photos/seed/skyrim2/500/300",
+"https://picsum.photos/seed/skyrim3/500/300"
+],
+min:["CPU: Intel i5","RAM: 4GB","GPU: GTX 470"],
+rec:["CPU: Intel i7","RAM: 8GB","GPU: GTX 970"],
+cur:[
+"Um dos RPGs mais influentes da história.",
+"O jogo possui milhares de mods criados pela comunidade."
+],
+semelhantes:["The Witcher 3","Elden Ring","Assassin's Creed Valhalla"]
+},
+
+
+{
+nome:"Fortnite",
+nota:"⭐ 9.2 | 2017",
+desc:"Fortnite é um dos battle royale mais populares do mundo. Cem jogadores caem em uma ilha e precisam sobreviver enquanto o mapa diminui. O jogo mistura combate, construção e eventos ao vivo que mudam constantemente o mundo do jogo.",
+capa:"https://picsum.photos/seed/fortnite1/400/600",
+banner:"https://picsum.photos/seed/fortnite2/1200/500",
+trailer:"https://www.youtube.com/embed/Fcl30mWtJQU",
+dicas:[
+"Construa estruturas rapidamente durante combate.",
+"Procure baús para armas melhores.",
+"Use fones para ouvir passos de inimigos.",
+"Fique sempre dentro da zona segura."
+],
+info:[
+"Estúdio: Epic Games",
+"Gênero: Battle Royale",
+"Modo: Multiplayer",
+"Plataformas: PC, PlayStation, Xbox, Switch, Mobile"
+],
+galeria:[
+"https://picsum.photos/seed/fortnite3/500/300",
+"https://picsum.photos/seed/fortnite4/500/300",
+"https://picsum.photos/seed/fortnite5/500/300"
+],
+min:["CPU: Intel i3","RAM: 8GB","GPU: GTX 660"],
+rec:["CPU: Intel i5","RAM: 16GB","GPU: GTX 1060"],
+cur:[
+"Fortnite já teve mais de 400 milhões de jogadores."
+],
+semelhantes:["Battlefield 6","Halo Infinite","GTA V"]
+},
+
+{
+nome:"Rocket League",
+nota:"⭐ 9.1 | 2015",
+desc:"Rocket League mistura futebol com carros em partidas rápidas e competitivas. Os jogadores usam veículos turbo para marcar gols em arenas futuristas.",
+capa:"https://picsum.photos/seed/rl1/400/600",
+banner:"https://picsum.photos/seed/rl2/1200/500",
+trailer:"https://www.youtube.com/embed/SgSX3gOrj60",
+dicas:[
+"Treine controle aéreo.",
+"Use boost com estratégia.",
+"Jogue em equipe.",
+"Treine no modo livre."
+],
+info:[
+"Estúdio: Psyonix",
+"Gênero: Esporte",
+"Modo: Multiplayer",
+"Plataformas: PC, PlayStation, Xbox, Switch"
+],
+galeria:[
+"https://picsum.photos/seed/rl3/500/300",
+"https://picsum.photos/seed/rl4/500/300",
+"https://picsum.photos/seed/rl5/500/300"
+],
+min:["CPU: Intel i3","RAM: 4GB","GPU: GTX 460"],
+rec:["CPU: Intel i5","RAM: 8GB","GPU: GTX 960"],
+cur:[
+"Virou um dos esports mais populares do mundo."
+],
+semelhantes:["FIFA 26","Forza Horizon 5","Fortnite"]
+},
+
+{
+nome:"F1 25",
+nota:"⭐ 9.0 | 2025",
+desc:"F1 25 traz a experiência oficial da Fórmula 1 com pilotos, equipes e circuitos reais. O jogo oferece modos de carreira, campeonatos e corridas online competitivas.",
+capa:"https://picsum.photos/seed/f125a/400/600",
+banner:"https://picsum.photos/seed/f125b/1200/500",
+trailer:"https://www.youtube.com/embed/2Xy6c0kqS2U",
+dicas:[
+"Controle desgaste dos pneus.",
+"Ajuste aerodinâmica.",
+"Treine classificação.",
+"Gerencie combustível."
+],
+info:[
+"Estúdio: Codemasters",
+"Gênero: Corrida",
+"Modo: Singleplayer / Multiplayer",
+"Plataformas: PC, PlayStation, Xbox"
+],
+galeria:[
+"https://picsum.photos/seed/f125c/500/300",
+"https://picsum.photos/seed/f125d/500/300",
+"https://picsum.photos/seed/f125e/500/300"
+],
+min:["CPU: Intel i5","RAM: 8GB","GPU: GTX 970"],
+rec:["CPU: Intel i7","RAM: 16GB","GPU: RTX 2070"],
+cur:[
+"Possui todas as equipes da Fórmula 1."
+],
+semelhantes:["Forza Horizon 5","Rocket League","GTA V"]
+},
+
+{
+nome:"FIFA 26",
+nota:"⭐ 8.9 | 2026",
+desc:"FIFA 26 continua a popular franquia de futebol com times licenciados, modos online e melhorias na física da bola.",
+capa:"https://picsum.photos/seed/fifa1/400/600",
+banner:"https://picsum.photos/seed/fifa2/1200/500",
+trailer:"https://www.youtube.com/embed/XhP3Xh4LMA8",
+dicas:[
+"Treine finalizações.",
+"Controle posse de bola.",
+"Use substituições estratégicas.",
+"Ajuste táticas do time."
+],
+info:[
+"Estúdio: EA Sports",
+"Gênero: Esporte / Futebol",
+"Modo: Singleplayer / Multiplayer",
+"Plataformas: PC, PlayStation, Xbox"
+],
+galeria:[
+"https://picsum.photos/seed/fifa3/500/300",
+"https://picsum.photos/seed/fifa4/500/300",
+"https://picsum.photos/seed/fifa5/500/300"
+],
+min:["CPU: Intel i5","RAM: 8GB","GPU: GTX 1050"],
+rec:["CPU: Intel i7","RAM: 16GB","GPU: RTX 2060"],
+cur:[
+"A série FIFA vende milhões de cópias todo ano."
+],
+semelhantes:["Rocket League","Forza Horizon 5","Fortnite"]
+},
+
+{
+nome:"Fallout 4",
+nota:"⭐ 9.1 | 2015",
+desc:"Fallout 4 é um RPG de mundo aberto ambientado em um futuro pós-apocalíptico onde você explora cidades destruídas e enfrenta mutantes perigosos.",
+capa:"https://picsum.photos/seed/fallout1/400/600",
+banner:"https://picsum.photos/seed/fallout2/1200/500",
+trailer:"https://www.youtube.com/embed/X5aJfebzkrM",
+dicas:[
+"Explore bunkers para recursos.",
+"Construa assentamentos.",
+"Gerencie munição.",
+"Use armaduras especiais."
+],
+info:[
+"Estúdio: Bethesda",
+"Gênero: RPG / Mundo aberto",
+"Modo: Singleplayer",
+"Plataformas: PC, PlayStation, Xbox"
+],
+galeria:[
+"https://picsum.photos/seed/fallout3/500/300",
+"https://picsum.photos/seed/fallout4/500/300",
+"https://picsum.photos/seed/fallout5/500/300"
+],
+min:["CPU: Intel i5","RAM: 8GB","GPU: GTX 760"],
+rec:["CPU: Intel i7","RAM: 16GB","GPU: GTX 1060"],
+cur:[
+"O jogo possui milhares de mods."
+],
+semelhantes:["Skyrim","Cyberpunk 2077","The Witcher 3"]
+},
+
+{
+nome:"Starfield",
+nota:"⭐ 8.8 | 2023",
+desc:"Starfield é um RPG espacial onde o jogador explora sistemas solares inteiros e descobre segredos do universo.",
+capa:"https://picsum.photos/seed/starfield1/400/600",
+banner:"https://picsum.photos/seed/starfield2/1200/500",
+trailer:"https://www.youtube.com/embed/pYqyVpCV-3c",
+dicas:[
+"Melhore sua nave.",
+"Explore planetas diferentes.",
+"Complete missões secundárias.",
+"Gerencie recursos."
+],
+info:[
+"Estúdio: Bethesda",
+"Gênero: RPG espacial",
+"Modo: Singleplayer",
+"Plataformas: PC, Xbox"
+],
+galeria:[
+"https://picsum.photos/seed/starfield3/500/300",
+"https://picsum.photos/seed/starfield4/500/300",
+"https://picsum.photos/seed/starfield5/500/300"
+],
+min:["CPU: Intel i5","RAM: 16GB","GPU: GTX 1070"],
+rec:["CPU: Intel i7","RAM: 32GB","GPU: RTX 2080"],
+cur:[
+"Possui centenas de planetas exploráveis."
+],
+semelhantes:["Cyberpunk 2077","Skyrim","No Man's Sky"]
+},
+
+{
+nome:"Ghost of Tsushima",
+nota:"⭐ 9.4 | 2020",
+desc:"Ghost of Tsushima acompanha um samurai defendendo sua terra contra a invasão mongol no Japão feudal.",
+capa:"https://picsum.photos/seed/tsushima1/400/600",
+banner:"https://picsum.photos/seed/tsushima2/1200/500",
+trailer:"https://www.youtube.com/embed/Zbq7BnsQhrw",
+dicas:[
+"Use furtividade para derrotar inimigos.",
+"Melhore armaduras.",
+"Explore o mapa.",
+"Domine diferentes estilos de combate."
+],
+info:[
+"Estúdio: Sucker Punch",
+"Gênero: Ação / Mundo aberto",
+"Modo: Singleplayer",
+"Plataformas: PC, PlayStation"
+],
+galeria:[
+"https://picsum.photos/seed/tsushima3/500/300",
+"https://picsum.photos/seed/tsushima4/500/300",
+"https://picsum.photos/seed/tsushima5/500/300"
+],
+min:["CPU: Intel i5","RAM: 8GB","GPU: GTX 960"],
+rec:["CPU: Intel i7","RAM: 16GB","GPU: RTX 2060"],
+cur:[
+"Um dos jogos mais bonitos da geração PS4."
+],
+semelhantes:["Assassin's Creed Valhalla","God of War","The Witcher 3"]
+},
+
+{
+nome:"No Man's Sky",
+nota:"⭐ 8.7 | 2016",
+desc:"No Man's Sky é um jogo de exploração espacial com bilhões de planetas gerados proceduralmente.",
+capa:"https://picsum.photos/seed/nms1/400/600",
+banner:"https://picsum.photos/seed/nms2/1200/500",
+trailer:"https://www.youtube.com/embed/nLtmEjqzg7M",
+dicas:[
+"Explore diferentes planetas.",
+"Melhore sua nave.",
+"Construa bases.",
+"Gerencie oxigênio."
+],
+info:[
+"Estúdio: Hello Games",
+"Gênero: Exploração espacial",
+"Modo: Singleplayer / Multiplayer",
+"Plataformas: PC, PlayStation, Xbox"
+],
+galeria:[
+"https://picsum.photos/seed/nms3/500/300",
+"https://picsum.photos/seed/nms4/500/300",
+"https://picsum.photos/seed/nms5/500/300"
+],
+min:["CPU: Intel i5","RAM: 8GB","GPU: GTX 760"],
+rec:["CPU: Intel i7","RAM: 16GB","GPU: GTX 1060"],
+cur:[
+"O jogo possui bilhões de planetas."
+],
+semelhantes:["Starfield","Subnautica","Minecraft"]
+},
+
+{
+nome:"Metal Gear Solid V",
+nota:"⭐ 9.5 | 2015",
+desc:"Metal Gear Solid V é um jogo de ação stealth em mundo aberto onde o jogador controla Big Boss em missões militares estratégicas.",
+capa:"https://picsum.photos/seed/mgs1/400/600",
+banner:"https://picsum.photos/seed/mgs2/1200/500",
+trailer:"https://www.youtube.com/embed/A9JV0EvCkMI",
+dicas:[
+"Use furtividade sempre que possível.",
+"Marque inimigos com binóculos.",
+"Use o ambiente para se esconder.",
+"Planeje ataques antes de agir."
+],
+info:[
+"Estúdio: Konami",
+"Gênero: Ação / Stealth",
+"Modo: Singleplayer / Online",
+"Plataformas: PC, PlayStation, Xbox"
+],
+galeria:[
+"https://picsum.photos/seed/mgs3/500/300",
+"https://picsum.photos/seed/mgs4/500/300",
+"https://picsum.photos/seed/mgs5/500/300"
+],
+min:["CPU: Intel i5","RAM: 8GB","GPU: GTX 760"],
+rec:["CPU: Intel i7","RAM: 16GB","GPU: GTX 1060"],
+cur:[
+"Considerado um dos melhores jogos stealth."
+],
+semelhantes:["Far Cry 3","Cyberpunk 2077","GTA V"]
+},
+
+{
+nome:"Baldur's Gate 3",
+nota:"⭐ 9.6 | 2023",
+desc:"Baldur's Gate 3 é um RPG profundo baseado no universo de Dungeons & Dragons. O jogo permite criar seu próprio personagem e embarcar em uma jornada cheia de escolhas que realmente mudam a história. Com combates estratégicos por turno, exploração detalhada e dezenas de possibilidades de diálogo, cada decisão pode alterar completamente o rumo da aventura.",
+capa:"https://picsum.photos/seed/bg31/400/600",
+banner:"https://picsum.photos/seed/bg32/1200/500",
+trailer:"https://www.youtube.com/embed/1T22wNvoNiU",
+dicas:[
+"Explore cada área com calma para encontrar missões escondidas.",
+"Use o ambiente nas batalhas para ganhar vantagem.",
+"Converse com todos os personagens para desbloquear histórias extras.",
+"Experimente diferentes classes para criar estratégias únicas."
+],
+info:[
+"Estúdio: Larian Studios",
+"Gênero: RPG / Estratégia",
+"Modo: Singleplayer / Multiplayer",
+"Plataformas: PC, PlayStation, Xbox"
+],
+galeria:[
+"https://picsum.photos/seed/bg33/500/300",
+"https://picsum.photos/seed/bg34/500/300",
+"https://picsum.photos/seed/bg35/500/300"
+],
+min:["CPU: Intel i5","RAM: 8GB","GPU: GTX 970"],
+rec:["CPU: Intel i7","RAM: 16GB","GPU: RTX 2060"],
+cur:[
+"Ganhou o prêmio de Jogo do Ano em 2023.",
+"O jogo possui centenas de finais diferentes dependendo das escolhas."
+],
+semelhantes:["Skyrim","The Witcher 3","Elden Ring"]
+},
+
+{
+nome:"League of Legends",
+nota:"⭐ 9.0 | 2009",
+desc:"League of Legends é um dos jogos competitivos mais populares do mundo. Duas equipes de cinco jogadores lutam para destruir a base inimiga enquanto controlam campeões com habilidades únicas. Estratégia, trabalho em equipe e habilidade são essenciais para vencer.",
+capa:"https://picsum.photos/seed/lol1/400/600",
+banner:"https://picsum.photos/seed/lol2/1200/500",
+trailer:"https://www.youtube.com/embed/IzMnCv_lPxI",
+dicas:[
+"Aprenda bem um campeão antes de testar vários.",
+"Controle visão do mapa com sentinelas.",
+"Jogue sempre em equipe.",
+"Observe o minimapa constantemente."
+],
+info:[
+"Estúdio: Riot Games",
+"Gênero: MOBA",
+"Modo: Multiplayer",
+"Plataformas: PC"
+],
+galeria:[
+"https://picsum.photos/seed/lol3/500/300",
+"https://picsum.photos/seed/lol4/500/300",
+"https://picsum.photos/seed/lol5/500/300"
+],
+min:["CPU: Intel i3","RAM: 4GB","GPU: Integrada"],
+rec:["CPU: Intel i5","RAM: 8GB","GPU: GTX 750"],
+cur:[
+"Um dos esports mais assistidos do mundo."
+],
+semelhantes:["Valorant","Fortnite","Overwatch 2"]
+},
+
+{
+nome:"Valorant",
+nota:"⭐ 9.1 | 2020",
+desc:"Valorant é um jogo de tiro tático competitivo onde duas equipes se enfrentam em rodadas intensas. Cada personagem possui habilidades únicas que podem mudar completamente o resultado de uma partida.",
+capa:"https://picsum.photos/seed/valorant1/400/600",
+banner:"https://picsum.photos/seed/valorant2/1200/500",
+trailer:"https://www.youtube.com/embed/e_E9W2vsRbQ",
+dicas:[
+"Mire sempre na cabeça.",
+"Comunique posições inimigas.",
+"Use habilidades com estratégia.",
+"Controle economia de dinheiro."
+],
+info:[
+"Estúdio: Riot Games",
+"Gênero: FPS Tático",
+"Modo: Multiplayer",
+"Plataformas: PC"
+],
+galeria:[
+"https://picsum.photos/seed/valorant3/500/300",
+"https://picsum.photos/seed/valorant4/500/300",
+"https://picsum.photos/seed/valorant5/500/300"
+],
+min:["CPU: Intel i3","RAM: 4GB","GPU: Integrada"],
+rec:["CPU: Intel i5","RAM: 8GB","GPU: GTX 1050"],
+cur:[
+"Virou um dos FPS competitivos mais populares."
+],
+semelhantes:["Counter-Strike 2","Rainbow Six Siege","Halo Infinite"]
+},
+
+{
+nome:"Counter-Strike 2",
+nota:"⭐ 9.4 | 2023",
+desc:"Counter-Strike 2 é a evolução do clássico jogo de tiro competitivo. Terroristas e contra-terroristas se enfrentam em partidas estratégicas onde precisão e trabalho em equipe são fundamentais.",
+capa:"https://picsum.photos/seed/cs21/400/600",
+banner:"https://picsum.photos/seed/cs22/1200/500",
+trailer:"https://www.youtube.com/embed/c80dVYcL69E",
+dicas:[
+"Controle recuo das armas.",
+"Use granadas com estratégia.",
+"Comunique-se com o time.",
+"Controle economia do time."
+],
+info:[
+"Estúdio: Valve",
+"Gênero: FPS",
+"Modo: Multiplayer",
+"Plataformas: PC"
+],
+galeria:[
+"https://picsum.photos/seed/cs23/500/300",
+"https://picsum.photos/seed/cs24/500/300",
+"https://picsum.photos/seed/cs25/500/300"
+],
+min:["CPU: Intel i5","RAM: 8GB","GPU: GTX 960"],
+rec:["CPU: Intel i7","RAM: 16GB","GPU: GTX 1660"],
+cur:[
+"Um dos jogos mais jogados da história da Steam."
+],
+semelhantes:["Valorant","Rainbow Six Siege","Battlefield 6"]
+},
+
+{
+nome:"PUBG Battlegrounds",
+nota:"⭐ 8.9 | 2017",
+desc:"PUBG é um dos pioneiros do gênero battle royale moderno. Cem jogadores caem em uma ilha e precisam encontrar armas e equipamentos enquanto lutam para ser o último sobrevivente.",
+capa:"https://picsum.photos/seed/pubg1/400/600",
+banner:"https://picsum.photos/seed/pubg2/1200/500",
+trailer:"https://www.youtube.com/embed/u1oqfdh4xBY",
+dicas:[
+"Caia em áreas com bom loot.",
+"Evite correr em campo aberto.",
+"Use veículos com cuidado.",
+"Fique sempre dentro da zona segura."
+],
+info:[
+"Estúdio: PUBG Studios",
+"Gênero: Battle Royale",
+"Modo: Multiplayer",
+"Plataformas: PC, PlayStation, Xbox"
+],
+galeria:[
+"https://picsum.photos/seed/pubg3/500/300",
+"https://picsum.photos/seed/pubg4/500/300",
+"https://picsum.photos/seed/pubg5/500/300"
+],
+min:["CPU: Intel i5","RAM: 8GB","GPU: GTX 960"],
+rec:["CPU: Intel i7","RAM: 16GB","GPU: RTX 2060"],
+cur:[
+"Popularizou o gênero battle royale."
+],
+semelhantes:["Fortnite","Apex Legends","Battlefield 6"]
+},
+
+{
+nome:"Overwatch 2",
+nota:"⭐ 8.8 | 2022",
+desc:"Overwatch 2 é um shooter competitivo em equipes onde cada herói possui habilidades únicas. O jogo mistura ação rápida com estratégia e cooperação entre jogadores.",
+capa:"https://picsum.photos/seed/ow1/400/600",
+banner:"https://picsum.photos/seed/ow2/1200/500",
+trailer:"https://www.youtube.com/embed/GKXS_YA9s7E",
+dicas:[
+"Use habilidades em conjunto com seu time.",
+"Aprenda o papel de cada herói.",
+"Controle objetivos do mapa."
+],
+info:[
+"Estúdio: Blizzard",
+"Gênero: FPS / Hero Shooter",
+"Modo: Multiplayer",
+"Plataformas: PC, PlayStation, Xbox, Switch"
+],
+galeria:[
+"https://picsum.photos/seed/ow3/500/300",
+"https://picsum.photos/seed/ow4/500/300",
+"https://picsum.photos/seed/ow5/500/300"
+],
+min:["CPU: Intel i3","RAM: 6GB","GPU: GTX 600"],
+rec:["CPU: Intel i7","RAM: 16GB","GPU: GTX 1060"],
+cur:[
+"O jogo possui dezenas de heróis jogáveis."
+],
+semelhantes:["Valorant","Halo Infinite","Fortnite"]
+},
+
+{
+nome:"Diablo IV",
+nota:"⭐ 9.0 | 2023",
+desc:"Diablo IV é um RPG de ação sombrio onde jogadores enfrentam hordas de demônios enquanto exploram um mundo aberto cheio de masmorras e loot poderoso.",
+capa:"https://picsum.photos/seed/d41/400/600",
+banner:"https://picsum.photos/seed/d42/1200/500",
+trailer:"https://www.youtube.com/embed/0SSYzl9fXOQ",
+dicas:[
+"Explore masmorras para equipamentos raros.",
+"Melhore habilidades constantemente.",
+"Jogue em grupo para enfrentar chefes."
+],
+info:[
+"Estúdio: Blizzard",
+"Gênero: RPG / Ação",
+"Modo: Singleplayer / Multiplayer",
+"Plataformas: PC, PlayStation, Xbox"
+],
+galeria:[
+"https://picsum.photos/seed/d43/500/300",
+"https://picsum.photos/seed/d44/500/300",
+"https://picsum.photos/seed/d45/500/300"
+],
+min:["CPU: Intel i5","RAM: 8GB","GPU: GTX 970"],
+rec:["CPU: Intel i7","RAM: 16GB","GPU: RTX 2060"],
+cur:[
+"Continua a famosa série Diablo iniciada em 1996."
+],
+semelhantes:["Skyrim","The Witcher 3","Baldur's Gate 3"]
+},
+
+{
+nome:"Apex Legends",
+nota:"⭐ 9.1 | 2019",
+desc:"Apex Legends é um battle royale focado em equipes de três jogadores com personagens únicos e habilidades especiais.",
+capa:"https://picsum.photos/seed/apex1/400/600",
+banner:"https://picsum.photos/seed/apex2/1200/500",
+trailer:"https://www.youtube.com/embed/innmNewjkuk",
+dicas:[
+"Trabalhe sempre em equipe.",
+"Use habilidades de personagem com estratégia.",
+"Pingue inimigos para comunicar ao time."
+],
+info:[
+"Estúdio: Respawn",
+"Gênero: Battle Royale / FPS",
+"Modo: Multiplayer",
+"Plataformas: PC, PlayStation, Xbox, Switch"
+],
+galeria:[
+"https://picsum.photos/seed/apex3/500/300",
+"https://picsum.photos/seed/apex4/500/300",
+"https://picsum.photos/seed/apex5/500/300"
+],
+min:["CPU: Intel i5","RAM: 8GB","GPU: GTX 970"],
+rec:["CPU: Intel i7","RAM: 16GB","GPU: RTX 2060"],
+cur:[
+"Apex alcançou milhões de jogadores em poucos dias."
+],
+semelhantes:["Fortnite","PUBG Battlegrounds","Halo Infinite"]
+},
+
+{
+nome:"Terraria",
+nota:"⭐ 9.2 | 2011",
+desc:"Terraria é um jogo sandbox de exploração e construção em 2D onde o jogador coleta recursos, cria equipamentos e enfrenta chefes poderosos.",
+capa:"https://picsum.photos/seed/terraria1/400/600",
+banner:"https://picsum.photos/seed/terraria2/1200/500",
+trailer:"https://www.youtube.com/embed/w7uOhFTrrq0",
+dicas:[
+"Explore cavernas para encontrar recursos raros.",
+"Construa bases para se proteger.",
+"Prepare equipamentos antes de enfrentar chefes."
+],
+info:[
+"Estúdio: Re-Logic",
+"Gênero: Sandbox / Aventura",
+"Modo: Singleplayer / Multiplayer",
+"Plataformas: PC, PlayStation, Xbox, Switch, Mobile"
+],
+galeria:[
+"https://picsum.photos/seed/terraria3/500/300",
+"https://picsum.photos/seed/terraria4/500/300",
+"https://picsum.photos/seed/terraria5/500/300"
+],
+min:["CPU: Intel i3","RAM: 4GB","GPU: Integrada"],
+rec:["CPU: Intel i5","RAM: 8GB","GPU: GTX 750"],
+cur:[
+"Terraria vendeu mais de 40 milhões de cópias."
+],
+semelhantes:["Minecraft","Subnautica","No Man's Sky"]
+},
+
+{
+nome:"Dead by Daylight",
+nota:"⭐ 8.7 | 2016",
+desc:"Dead by Daylight é um jogo multiplayer de terror onde um jogador controla o assassino enquanto quatro sobreviventes tentam escapar.",
+capa:"https://picsum.photos/seed/dbd1/400/600",
+banner:"https://picsum.photos/seed/dbd2/1200/500",
+trailer:"https://www.youtube.com/embed/JGhIXLO3ul8",
+dicas:[
+"Trabalhe em equipe para reparar geradores.",
+"Fique atento ao som do assassino.",
+"Use vantagens estratégicas."
+],
+info:[
+"Estúdio: Behaviour Interactive",
+"Gênero: Terror / Multiplayer",
+"Modo: Multiplayer",
+"Plataformas: PC, PlayStation, Xbox, Switch"
+],
+galeria:[
+"https://picsum.photos/seed/dbd3/500/300",
+"https://picsum.photos/seed/dbd4/500/300",
+"https://picsum.photos/seed/dbd5/500/300"
+],
+min:["CPU: Intel i3","RAM: 8GB","GPU: GTX 760"],
+rec:["CPU: Intel i7","RAM: 16GB","GPU: GTX 1060"],
+cur:[
+"O jogo possui assassinos de várias franquias de terror."
+],
+semelhantes:["Resident Evil 4","The Last of Us","Halo Infinite"]
+},
+
+
+]
+
+let lista=document.getElementById("listaJogos")
+
+jogos.forEach(j=>{
+
+let card=document.createElement("div")
+card.className="card"
+
+card.innerHTML=`
+<img src="${j.capa}">
+<h3>${j.nome}</h3>
+<p>${j.nota}</p>
+`
+
+card.onclick=()=>abrir(j)
+
+lista.appendChild(card)
+
+})
+
+function abrir(j){
+
+document.querySelector(".grid").style.display="none"
+paginaJogo.style.display="block"
+barraPesquisa.style.display="none"
+
+imgJogo.src=j.banner
+nomeJogo.innerText=j.nome
+notaJogo.innerText=j.nota
+descJogo.innerText=j.desc
+trailerJogo.src=j.trailer
+
+listaDicas.innerHTML=""
+infoJogo.innerHTML=""
+galeriaJogo.innerHTML=""
+reqMin.innerHTML=""
+reqRec.innerHTML=""
+curiosidades.innerHTML=""
+semelhantes.innerHTML=""
+
+j.dicas.forEach(d=>listaDicas.innerHTML+=`<li>${d}</li>`)
+j.info.forEach(d=>infoJogo.innerHTML+=`<li>${d}</li>`)
+j.min.forEach(d=>reqMin.innerHTML+=`<li>${d}</li>`)
+j.rec.forEach(d=>reqRec.innerHTML+=`<li>${d}</li>`)
+j.cur.forEach(d=>curiosidades.innerHTML+=`<li>${d}</li>`)
+
+j.galeria.forEach(img=>{
+galeriaJogo.innerHTML+=`<img src="${img}">`
+})
+
+j.semelhantes.forEach(nome=>{
+
+let jogo=jogos.find(x=>x.nome===nome)
+
+if(jogo){
+
+let card=document.createElement("div")
+card.className="card"
+
+card.innerHTML=`
+<img src="${jogo.capa}">
+<h3>${jogo.nome}</h3>
+<p>${jogo.nota}</p>
+`
+
+card.onclick=()=>abrir(jogo)
+
+semelhantes.appendChild(card)
+
+}
+
+})
+
+}
+
+function voltar(){
+document.querySelector(".grid").style.display="grid"
+paginaJogo.style.display="none"
+barraPesquisa.style.display="block"
+}
+
+function buscar(texto){
+
+texto=texto.toLowerCase()
+
+document.querySelectorAll(".card").forEach(c=>{
+c.style.display=c.innerText.toLowerCase().includes(texto)?"block":"none"
+})
+
+}
+
+</script>
+
+</body>
+</html>
