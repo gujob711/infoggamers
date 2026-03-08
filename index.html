@@ -152,23 +152,28 @@ text-align:center;
 margin-top:20px;
 }
 
+/* container */
+
 .estrelas{
 position:relative;
-font-size:35px;
-width:max-content;
+font-size:40px;
+width:420px;
 margin:auto;
+letter-spacing:5px;
 }
 
-/* estrelas base (cinza) */
+/* estrelas cinza */
+
 .estrelas-base{
 color:#555;
 }
 
 .estrelas-base::before{
-content:"⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐";
+content:"★★★★★★★★★★";
 }
 
-/* estrelas da nota (roxas) */
+/* estrelas roxas */
+
 .estrelas-topo{
 position:absolute;
 top:0;
@@ -177,21 +182,11 @@ overflow:hidden;
 white-space:nowrap;
 width:0%;
 color:#7b00ff;
+transition:width 0.4s;
 }
 
 .estrelas-topo::before{
-content:"⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐";
-}
-
-#notaInput{
-margin-top:15px;
-padding:8px;
-border-radius:10px;
-border:none;
-width:150px;
-text-align:center;
-background:#2b004d;
-color:white;
+content:"★★★★★★★★★★";
 }
   
 </style>
@@ -1621,6 +1616,7 @@ document.getElementById("estrelas").style.width=porcentagem+"%"
 
 </body>
 </html>
+
 
 
 
