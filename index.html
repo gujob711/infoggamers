@@ -193,11 +193,6 @@ padding:30px;
 </div>
 
 <div class="caixa">
-<h2>Dicas</h2>
-<ul id="listaDicas"></ul>
-</div>
-
-<div class="caixa">
 <h2>Jogos semelhantes</h2>
 <div id="semelhantes" class="grid"></div>
 </div>
@@ -1504,7 +1499,6 @@ infoJogo.innerHTML=""
 galeriaJogo.innerHTML=""
 semelhantes.innerHTML=""
 
-j.dicas.forEach(d=>listaDicas.innerHTML+=`<li>${d}</li>`)
 j.info.forEach(d=>infoJogo.innerHTML+=`<li>${d}</li>`)
 
 
@@ -1557,6 +1551,7 @@ c.style.display=c.innerText.toLowerCase().includes(texto)?"block":"none"
 
 </body>
 </html>
+
 
 
 
