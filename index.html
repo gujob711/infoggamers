@@ -147,6 +147,46 @@ text-align:center;
 padding:30px;
 }
 
+.avaliacao{
+text-align:center;
+margin-top:15px;
+}
+
+.estrelas{
+position:relative;
+font-size:40px;
+color:#555;
+}
+
+.estrelas::before{
+content:"★★★★★";
+color:#555;
+}
+
+.estrelas-amarelas{
+position:absolute;
+top:0;
+left:0;
+white-space:nowrap;
+overflow:hidden;
+color:gold;
+}
+
+.estrelas-amarelas::before{
+content:"★★★★★";
+}
+
+#notaInput{
+margin-top:10px;
+padding:8px;
+border-radius:10px;
+border:none;
+width:160px;
+text-align:center;
+background:#2b004d;
+color:white;
+}
+  
 </style>
 
 </head>
@@ -169,6 +209,16 @@ padding:30px;
 
 <img id="imgJogo" class="banner">
 
+<div class="avaliacao">
+
+<div class="estrelas">
+<div class="estrelas-amarelas" id="estrelas"></div>
+</div>
+
+<input type="number" id="notaInput" min="0" max="10" step="0.1" placeholder="Digite a nota (0-10)" oninput="avaliar()">
+
+</div>
+  
 <h1 id="nomeJogo"></h1>
 <p id="notaJogo"></p>
 
@@ -1543,10 +1593,24 @@ c.style.display=c.innerText.toLowerCase().includes(texto)?"block":"none"
 
 }
 
+function avaliar(){
+
+let nota=document.getElementById("notaInput").value
+
+if(nota>10) nota=10
+if(nota<0) nota=0
+
+let porcentagem=(nota/10)*100
+
+document.getElementById("estrelas").style.width=porcentagem+"%"
+
+}
+  
 </script>
 
 </body>
 </html>
+
 
 
 
