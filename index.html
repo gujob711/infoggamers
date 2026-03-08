@@ -147,42 +147,6 @@ text-align:center;
 padding:30px;
 }
 
-.estrelas{
-position:relative;
-display:inline-block;
-font-size:28px;
-letter-spacing:4px;
-}
-
-.estrelas-base{
-color:#666;
-}
-
-.estrelas-base::before{
-content:"★★★★★★★★★★";
-}
-
-.estrelas-topo{
-position:absolute;
-top:0;
-left:0;
-overflow:hidden;
-white-space:nowrap;
-width:0%;
-color:#7b00ff;
-}
-
-.estrelas-topo::before{
-content:"★★★★★★★★★★";
-}
-
-.estrelas-topo::before{
-content:"★★★★★★★★★★";
-}
-
-.estrelas-topo::before{
-content:"★★★★★★★★★★";
-}
   
 </style>
 
@@ -205,14 +169,6 @@ content:"★★★★★★★★★★";
 <div class="voltarTopo" onclick="voltar()"><</div>
 
 <img id="imgJogo" class="banner">
-
-<div class="estrelas">
-
-<div class="estrelas-base"></div>
-
-<div class="estrelas-topo" id="estrelas"></div>
-
-</div>
   
 <h1 id="nomeJogo"></h1>
 <p id="notaJogo"></p>
@@ -1586,25 +1542,12 @@ document.querySelectorAll(".card").forEach(c=>{
 c.style.display=c.innerText.toLowerCase().includes(texto)?"block":"none"
 })
 
-}
-
-function avaliar(){
-
-let nota=document.getElementById("notaInput").value
-
-if(nota>10) nota=10
-if(nota<0) nota=0
-
-let porcentagem=(nota/10)*100
-
-document.getElementById("estrelas").style.width=porcentagem+"%"
-
-}
   
 </script>
 
 </body>
 </html>
+
 
 
 
