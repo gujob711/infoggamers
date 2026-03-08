@@ -152,20 +152,25 @@ text-align:center;
 margin-top:20px;
 }
 
-/* container */
+/* container das estrelas */
 
 .estrelas{
 position:relative;
-font-size:40px;
-width:420px;
+width:300px;
 margin:auto;
-letter-spacing:5px;
+font-size:30px;
+line-height:1;
 }
 
 /* estrelas cinza */
 
 .estrelas-base{
-color:#555;
+color:#666;
+position:absolute;
+left:0;
+top:0;
+width:100%;
+overflow:hidden;
 }
 
 .estrelas-base::before{
@@ -175,14 +180,18 @@ content:"★★★★★★★★★★";
 /* estrelas roxas */
 
 .estrelas-topo{
+color:#7b00ff;
 position:absolute;
-top:0;
 left:0;
+top:0;
+width:0%;
 overflow:hidden;
 white-space:nowrap;
-width:0%;
-color:#7b00ff;
 transition:width 0.4s;
+}
+
+.estrelas-topo::before{
+content:"★★★★★★★★★★";
 }
 
 .estrelas-topo::before{
@@ -221,7 +230,7 @@ content:"★★★★★★★★★★";
 
 </div>
 
-<input type="number" id="notaInput" min="0" max="10" step="0.1" placeholder="nota 0-10" oninput="avaliar()">
+<input type="number" id="notaInput" min="0" max="10" step="0.1" oninput="avaliar()">
 
 </div>
   
@@ -1616,6 +1625,7 @@ document.getElementById("estrelas").style.width=porcentagem+"%"
 
 </body>
 </html>
+
 
 
 
