@@ -159,22 +159,24 @@ width:max-content;
 margin:auto;
 }
 
+/* estrelas base (cinza) */
 .estrelas-base{
-color:#444;
+color:#555;
 }
 
 .estrelas-base::before{
 content:"⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐";
 }
 
+/* estrelas da nota (roxas) */
 .estrelas-topo{
 position:absolute;
-left:0;
 top:0;
+left:0;
 overflow:hidden;
 white-space:nowrap;
-color:gold;
 width:0%;
+color:#7b00ff;
 }
 
 .estrelas-topo::before{
@@ -1619,6 +1621,7 @@ document.getElementById("estrelas").style.width=porcentagem+"%"
 
 </body>
 </html>
+
 
 
 
