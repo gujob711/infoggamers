@@ -198,21 +198,6 @@ padding:30px;
 </div>
 
 <div class="caixa">
-<h2>Requisitos mínimos</h2>
-<ul id="reqMin"></ul>
-</div>
-
-<div class="caixa">
-<h2>Requisitos recomendados</h2>
-<ul id="reqRec"></ul>
-</div>
-
-<div class="caixa">
-<h2>Curiosidades</h2>
-<ul id="curiosidades"></ul>
-</div>
-
-<div class="caixa">
 <h2>Jogos semelhantes</h2>
 <div id="semelhantes" class="grid"></div>
 </div>
@@ -251,22 +236,6 @@ galeria:[
 "https://i.postimg.cc/RCngGymq/images-(3).jpg",
 "https://i.postimg.cc/4NkB0P46/download-(36).jpg"
 ],
-min:[
-"CPU: Intel i5 2500K",
-"RAM: 8GB",
-"GPU: GTX 770",
-"Espaço: 150GB"
-],
-rec:[
-"CPU: Intel i7 4770K",
-"RAM: 12GB",
-"GPU: GTX 1060",
-"Espaço: 150GB"
-],
-cur:[
-"O desenvolvimento levou mais de 8 anos.",
-"O nível de detalhe do mundo é um dos maiores já feitos."
-],
 semelhantes:["GTA V","Far Cry 3","Skyrim"]
 },
 
@@ -293,12 +262,6 @@ galeria:[
 "https://i.postimg.cc/7ZTPLx8Q/images-(5).jpg",
 "https://i.postimg.cc/X7P73rhc/images-(6).jpg"
 ],
-min:["CPU: Intel i3","RAM: 4GB","GPU: Integrada"],
-rec:["CPU: Intel i5","RAM: 8GB","GPU: GTX 750"],
-cur:[
-"É o jogo mais vendido da história.",
-"Alguns servidores possuem milhares de jogadores simultâneos."
-],
 semelhantes:["Subnautica","Skyrim","Zelda BOTW"]
 },
 
@@ -324,12 +287,6 @@ galeria:[
 "https://i.postimg.cc/nhV5d2TX/images-(7).jpg",
 "https://i.postimg.cc/wjWrnNbr/download-(39).jpg",
 "https://i.postimg.cc/6QyPKQkZ/download-(38).jpg"
-],
-min:["CPU: Intel i5","RAM: 8GB","GPU: GTX 660"],
-rec:["CPU: Intel i7","RAM: 16GB","GPU: GTX 1060"],
-cur:[
-"GTA V já vendeu mais de 180 milhões de cópias.",
-"O mapa é inspirado em Los Angeles."
 ],
 semelhantes:["Red Dead Redemption 2","Cyberpunk 2077","Far Cry 3"]
 },
@@ -1552,9 +1509,7 @@ semelhantes.innerHTML=""
 
 j.dicas.forEach(d=>listaDicas.innerHTML+=`<li>${d}</li>`)
 j.info.forEach(d=>infoJogo.innerHTML+=`<li>${d}</li>`)
-j.min.forEach(d=>reqMin.innerHTML+=`<li>${d}</li>`)
-j.rec.forEach(d=>reqRec.innerHTML+=`<li>${d}</li>`)
-j.cur.forEach(d=>curiosidades.innerHTML+=`<li>${d}</li>`)
+
 
 j.galeria.forEach(img=>{
 galeriaJogo.innerHTML+=`<img src="${img}">`
@@ -1605,6 +1560,7 @@ c.style.display=c.innerText.toLowerCase().includes(texto)?"block":"none"
 
 </body>
 </html>
+
 
 
 
