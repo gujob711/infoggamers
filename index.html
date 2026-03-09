@@ -211,16 +211,6 @@ border-radius:8px;
 cursor:pointer;
 }
 
-.estrelas{
-font-size:22px;
-color:#7b00ff;
-letter-spacing:3px;
-}
-
-.estrelas span{
-color:#444;
-}
-  
 </style>
 
 </head>
@@ -1581,21 +1571,7 @@ barraPesquisa.style.display="none"
 
 imgJogo.src=j.banner
 nomeJogo.innerText=j.nome
-let notaNumero=parseFloat(j.nota.split("|")[0].replace("⭐",""))
-
-let estrelas=""
-
-for(let i=1;i<=10;i++){
-
-if(i<=Math.round(notaNumero)){
-estrelas+="★"
-}else{
-estrelas+="<span>★</span>"
-}
-
-}
-
-notaJogo.innerHTML=`<div class="estrelas">${estrelas} (${notaNumero})</div>`
+notaJogo.innerText=j.nota
 descJogo.innerText=j.desc
 trailerJogo.src=j.trailer
 
@@ -1695,6 +1671,7 @@ document.getElementById("progressoMusica").style.width=porcentagem+"%"
 
 </body>
 </html>
+
 
 
 
