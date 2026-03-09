@@ -210,6 +210,16 @@ padding:8px 12px;
 border-radius:8px;
 cursor:pointer;
 }
+
+.estrelas{
+font-size:22px;
+color:#7b00ff;
+letter-spacing:3px;
+}
+
+.estrelas span{
+color:#444;
+}
   
 </style>
 
@@ -1574,24 +1584,39 @@ barraPesquisa.style.display="none"
 
 imgJogo.src=j.banner
 nomeJogo.innerText=j.nome
-notaJogo.innerText=j.nota
+let notaNumero=parseFloat(j.nota.split("|")[0].replace("⭐",""))
+
+let estrelas=""
+
+for(let i=1;i<=10;i++){
+
+if(i<=Math.round(notaNumero)){
+estrelas+="★"
+}else{
+estrelas+="<span>★</span>"
+}
+
+}
+
+notaJogo.innerHTML=`<div class="estrelas">${estrelas} (${notaNumero})</div>`
 descJogo.innerText=j.desc
 trailerJogo.src=j.trailer
 
 if(j.musica){
 
-musicaJogo.src=j.musica
+musicaJogo.src = j.musica
 musicaJogo.play()
 
-capaMusica.src=j.musicaCapa
-nomeMusica.innerText=j.musicaNome
+capaMusica.src = j.musicaCapa
+nomeMusica.innerText = j.musicaNome
 
 }else{
 
 musicaJogo.pause()
-musicaJogo.src=""
-capaMusica.src=""
-nomeMusica.innerText=""
+musicaJogo.src = ""
+
+capaMusica.src = ""
+nomeMusica.innerText = ""
 
 }
 
@@ -1673,6 +1698,7 @@ document.getElementById("progressoMusica").style.width=porcentagem+"%"
 
 </body>
 </html>
+
 
 
 
