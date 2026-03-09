@@ -340,7 +340,6 @@ galeria:[
 musica:"https://files.catbox.moe/vtv41q.mp3",
 musicaNome:"Minecraft - aria math",
 musicaCapa:"imagens/minecraft-musica.jpg",
-],
 semelhantes:["Subnautica","Skyrim","Zelda BOTW"]
 },
 
@@ -1627,14 +1626,6 @@ musicaJogo.pause()
 musicaJogo.currentTime=0
 }
 
-function buscar(texto){
-
-texto=texto.toLowerCase()
-
-document.querySelectorAll(".card").forEach(c=>{
-c.style.display=c.innerText.toLowerCase().includes(texto)?"block":"none"
-})
-
 }
 
 function buscar(texto){
@@ -1671,6 +1662,7 @@ document.getElementById("progressoMusica").style.width=porcentagem+"%"
 
 </body>
 </html>
+
 
 
 
