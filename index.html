@@ -1573,8 +1573,20 @@ descJogo.innerText=j.desc
 trailerJogo.src=j.trailer
 
 if(j.musica){
+
 musicaJogo.src=j.musica
 musicaJogo.play()
+
+capaMusica.src=j.musicaCapa
+nomeMusica.innerText=j.musicaNome
+
+}else{
+
+musicaJogo.pause()
+musicaJogo.src=""
+capaMusica.src=""
+nomeMusica.innerText=""
+
 }
 
 infoJogo.innerHTML=""
@@ -1655,6 +1667,7 @@ document.getElementById("progressoMusica").style.width=porcentagem+"%"
 
 </body>
 </html>
+
 
 
 
