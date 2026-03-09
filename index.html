@@ -193,6 +193,8 @@ height:6px;
 background:#444;
 border-radius:10px;
 overflow:hidden;
+cursor:pointer;
+position:relative;
 }
 
 #progressoMusica{
@@ -201,6 +203,17 @@ width:0%;
 background:#7b00ff;
 }
 
+.bolinha{
+width:14px;
+height:14px;
+background:#7b00ff;
+border-radius:50%;
+position:absolute;
+top:-4px;
+left:0%;
+transform:translateX(-50%);
+}
+  
 .botaoMusica{
 background:#7b00ff;
 border:none;
@@ -241,8 +254,9 @@ cursor:pointer;
 
 <div id="nomeMusica"></div>
 
-<div class="barraMusica">
+<div class="barraMusica" onclick="mudarTempo(event)">
 <div id="progressoMusica"></div>
+<div id="bolinha" class="bolinha"></div>
 </div>
 
 </div>
@@ -1632,7 +1646,20 @@ musica.ontimeupdate=function(){
 
 let porcentagem=(musica.currentTime/musica.duration)*100
 
-document.getElementById("progressoMusica").style.width=porcentagem+"%"
+progressoMusica.style.width=porcentagem+"%"
+bolinha.style.left=porcentagem+"%"
+
+}
+
+function mudarTempo(e){
+
+let barra=e.currentTarget
+let largura=barra.clientWidth
+let clique=e.offsetX
+
+let porcentagem=clique/largura
+
+musica.currentTime=porcentagem*musica.duration
 
 }
   
@@ -1640,6 +1667,7 @@ document.getElementById("progressoMusica").style.width=porcentagem+"%"
 
 </body>
 </html>
+
 
 
 
