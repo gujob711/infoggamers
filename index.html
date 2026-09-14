@@ -1,1637 +1,2278 @@
+```html
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 
 <head>
 
 <meta charset="UTF-8">
-<title>INFOGGAMERS</title>
-<meta name="description" content="InfogGamers - portal gamer com informações completas sobre jogos, requisitos, trailers e dicas.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="google-site-verification" content="_w-ePiwKLquMf9elbqSEnxEGXRtgqZYXa8jKnm2sdFc" />
-  
-<link rel="icon" type="image/png" href="https://i.postimg.cc/hPQjyCRp/favicon-32x32.png">
-<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+<title>Viajaí - Agência de Viagens</title>
+
 
 <style>
 
-body{
-margin:0;
-font-family:Poppins;
+/* =========================================
+   CONFIGURAÇÕES GERAIS
+========================================= */
 
-background-image:
-linear-gradient(rgba(10,0,20,0.8),rgba(10,0,20,0.9)),
-url("https://images.unsplash.com/photo-1462331940025-496dfbfc7564");
-
-background-size:cover;
-background-position:center;
-background-attachment:fixed;
-
-color:white;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-header{
-display:flex;
-flex-direction:column;
-align-items:center;
-padding:40px;
+body {
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    background: #f4f7fa;
+
+    color: #17202a;
+
 }
 
-.logo{
-width:350px;
-margin-bottom:20px;
+
+/* =========================================
+   PARTE 1
+   TELA INICIAL
+========================================= */
+
+#pagina-inicial {
+
+    min-height: 100vh;
+
+    color: white;
+
+    background:
+
+        linear-gradient(
+            rgba(0,0,0,0.35),
+            rgba(0,0,0,0.55)
+        ),
+
+        url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1920&q=80");
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-repeat: no-repeat;
+
 }
 
-.pesquisa{
-width:300px;
-padding:10px;
-border-radius:20px;
-border:none;
-background:#2b004d;
-color:white;
-text-align:center;
+
+/* HEADER */
+
+header {
+
+    width: 100%;
+
+    height: 80px;
+
+    padding: 0 7%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
 }
 
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:25px;
-padding:40px;
+
+.logo {
+
+    font-size: 30px;
+
+    font-weight: bold;
+
 }
 
-.card{
-background:rgba(26,0,51,0.8);
-border-radius:12px;
-overflow:hidden;
-cursor:pointer;
-transition:0.3s;
+
+.logo span {
+
+    color: #38bdf8;
+
 }
 
-.card:hover{
-transform:scale(1.05);
+
+.minhas-viagens {
+
+    padding: 11px 20px;
+
+    border-radius: 30px;
+
+    border: 1px solid rgba(255,255,255,0.5);
+
+    background: rgba(255,255,255,0.12);
+
+    color: white;
+
+    cursor: pointer;
+
 }
 
-.card img{
-width:100%;
-height:250px;
-object-fit:cover;
+
+/* CENTRO */
+
+.hero {
+
+    min-height: calc(100vh - 80px);
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 40px 20px 100px;
+
 }
 
-.card h3{
-margin:10px;
+
+.hero-container {
+
+    width: 100%;
+
+    max-width: 1100px;
+
+    text-align: center;
+
 }
 
-.card p{
-margin:10px;
-color:#ccc;
+
+.tag {
+
+    display: inline-block;
+
+    padding: 9px 17px;
+
+    margin-bottom: 25px;
+
+    border-radius: 30px;
+
+    background: rgba(255,255,255,0.15);
+
+    border: 1px solid rgba(255,255,255,0.25);
+
+    font-size: 14px;
+
 }
 
-.jogo{
-display:none;
-padding:40px;
-max-width:1200px;
-margin:auto;
+
+.hero h1 {
+
+    font-size: 70px;
+
+    line-height: 1;
+
+    margin-bottom: 20px;
+
 }
 
-#nomeJogo{
-text-align:center;
-margin-top:25px;
-font-size:34px;
-font-weight:600;
+
+.subtitulo {
+
+    font-size: 19px;
+
+    color: rgba(255,255,255,0.88);
+
+    margin-bottom: 45px;
+
 }
 
-#notaJogo{
-text-align:center;
-color:#ffd700;
-font-size:18px;
-margin-top:6px;
-}
-  
-.banner{
-width:100%;
-height:520px;
-object-fit:cover;
-border-radius:12px;
-box-shadow:0 0 40px #7b00ff;
+
+/* CAIXA DE BUSCA */
+
+.search-box {
+
+    width: 100%;
+
+    padding: 14px;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr auto;
+
+    gap: 10px;
+
+    background: rgba(255,255,255,0.96);
+
+    border-radius: 24px;
+
+    box-shadow: 0 25px 70px rgba(0,0,0,0.3);
+
+    text-align: left;
+
 }
 
-.caixa{
-background:rgba(26,0,51,0.8);
-padding:20px;
-border-radius:10px;
-margin-top:20px;
+
+.campo {
+
+    position: relative;
+
+    padding: 14px 18px;
+
+    background: #f4f6f8;
+
+    border-radius: 17px;
+
+    border: 2px solid transparent;
+
 }
 
-.voltarTopo{
-position:fixed;
-top:20px;
-left:20px;
-width:50px;
-height:50px;
-border-radius:50%;
-background:#7b00ff;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:30px;
-cursor:pointer;
-box-shadow:0 0 15px #7b00ff;
-z-index:999;
+
+.campo:focus-within {
+
+    border-color: #38bdf8;
+
+    background: white;
+
 }
 
-.trailer{
-width:100%;
-height:500px;
-border:none;
-border-radius:10px;
+
+.campo label {
+
+    display: block;
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    color: #777;
+
+    margin-bottom: 7px;
+
+    text-transform: uppercase;
+
 }
 
-.galeria{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:15px;
+
+.input-area {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
 }
 
-.galeria img{
-width:100%;
-border-radius:10px;
+
+.icone {
+
+    font-size: 22px;
+
 }
 
-footer{
-text-align:center;
-padding:30px;
+
+input {
+
+    width: 100%;
+
+    border: none;
+
+    outline: none;
+
+    background: transparent;
+
+    font-size: 17px;
+
+    color: #111;
+
 }
 
-.player{
-display:flex;
-align-items:center;
-gap:15px;
-background:rgba(26,0,51,0.9);
-padding:12px;
-border-radius:12px;
-margin-top:20px;
+
+input::placeholder {
+
+    color: #aaa;
+
 }
 
-.capaMusica{
-width:60px;
-height:60px;
-border-radius:8px;
-object-fit:cover;
+
+/* AUTOCOMPLETE */
+
+.sugestoes-cidades {
+
+    position: absolute;
+
+    top: calc(100% + 8px);
+
+    left: 0;
+
+    right: 0;
+
+    background: white;
+
+    border-radius: 15px;
+
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+
+    overflow: hidden;
+
+    z-index: 100;
+
+    display: none;
+
 }
 
-.playerInfo{
-flex:1;
+
+.cidade {
+
+    padding: 14px 18px;
+
+    color: #222;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
 }
 
-#nomeMusica{
-font-size:14px;
-margin-bottom:5px;
+
+.cidade:hover {
+
+    background: #f0f9ff;
+
 }
 
-.barraMusica{
-width:100%;
-height:6px;
-background:#444;
-border-radius:10px;
-overflow:hidden;
-cursor:pointer;
-position:relative;
+
+.cidade-info {
+
+    display: flex;
+
+    flex-direction: column;
+
 }
 
-#progressoMusica{
-height:100%;
-width:0%;
-background:#7b00ff;
+
+.cidade-nome {
+
+    font-weight: bold;
+
+    font-size: 15px;
+
 }
 
-.bolinha{
-width:14px;
-height:14px;
-background:#7b00ff;
-border-radius:50%;
-position:absolute;
-top:-4px;
-left:0%;
-transform:translateX(-50%);
+
+.cidade-estado {
+
+    color: #888;
+
+    font-size: 12px;
+
+    margin-top: 3px;
+
 }
-  
-.botaoMusica{
-background:#7b00ff;
-border:none;
-color:white;
-font-size:18px;
-padding:8px 12px;
-border-radius:8px;
-cursor:pointer;
+
+
+/* BOTÃO */
+
+.continuar {
+
+    min-height: 72px;
+
+    padding: 0 32px;
+
+    border: none;
+
+    border-radius: 17px;
+
+    background: #0284c7;
+
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+
+}
+
+
+.continuar:hover {
+
+    background: #0369a1;
+
+    transform: translateY(-2px);
+
+}
+
+
+/* ERRO */
+
+.erro {
+
+    display: none;
+
+    margin: 15px auto;
+
+    width: fit-content;
+
+    padding: 10px 18px;
+
+    background: rgba(220,38,38,0.9);
+
+    border-radius: 10px;
+
+}
+
+
+/* DESTINOS */
+
+.sugestoes {
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-top: 28px;
+
+    flex-wrap: wrap;
+
+}
+
+
+.sugestao {
+
+    padding: 10px 16px;
+
+    border-radius: 30px;
+
+    border: 1px solid rgba(255,255,255,0.25);
+
+    background: rgba(255,255,255,0.13);
+
+    color: white;
+
+    cursor: pointer;
+
+}
+
+
+/* =========================================
+   PARTE 2
+   RESULTADOS
+========================================= */
+
+#pagina-voos {
+
+    display: none;
+
+    min-height: 100vh;
+
+    background: #f4f7fa;
+
+}
+
+
+/* HEADER DOS VOOS */
+
+.header-voos {
+
+    height: 75px;
+
+    background: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 7%;
+
+    border-bottom: 1px solid #e5e7eb;
+
+}
+
+
+/* RESUMO DA ROTA */
+
+.busca-resumo {
+
+    background: white;
+
+    padding: 25px 7%;
+
+    border-bottom: 1px solid #e5e7eb;
+
+}
+
+
+.rota {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    font-size: 23px;
+
+    font-weight: bold;
+
+}
+
+
+.seta {
+
+    color: #0284c7;
+
+}
+
+
+.info-busca {
+
+    margin-top: 8px;
+
+    color: #777;
+
+}
+
+
+/* CONTEÚDO */
+
+.conteudo {
+
+    width: 100%;
+
+    max-width: 1200px;
+
+    margin: auto;
+
+    padding: 35px 20px;
+
+}
+
+
+.titulo {
+
+    margin-bottom: 25px;
+
+}
+
+
+.titulo h1 {
+
+    font-size: 30px;
+
+}
+
+
+.titulo p {
+
+    margin-top: 7px;
+
+    color: #777;
+
+}
+
+
+/* ÁREA */
+
+.area-principal {
+
+    display: grid;
+
+    grid-template-columns: 220px 1fr;
+
+    gap: 25px;
+
+}
+
+
+/* FILTROS */
+
+.filtros {
+
+    background: white;
+
+    border-radius: 16px;
+
+    padding: 22px;
+
+    height: fit-content;
+
+    border: 1px solid #e5e7eb;
+
+}
+
+
+.filtros h3 {
+
+    margin-bottom: 20px;
+
+}
+
+
+.filtro {
+
+    margin-bottom: 20px;
+
+}
+
+
+.filtro strong {
+
+    display: block;
+
+    margin-bottom: 10px;
+
+}
+
+
+.filtro label {
+
+    display: block;
+
+    margin: 8px 0;
+
+    color: #555;
+
+    cursor: pointer;
+
+}
+
+
+/* VOOS */
+
+.voos {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+
+}
+
+
+/* CARD */
+
+.card-voo {
+
+    background: white;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    border: 1px solid #e5e7eb;
+
+    display: grid;
+
+    grid-template-columns: 230px 1fr;
+
+    transition: 0.2s;
+
+}
+
+
+.card-voo:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 12px 35px rgba(0,0,0,0.10);
+
+}
+
+
+/* FOTO */
+
+.foto {
+
+    min-height: 230px;
+
+    background-size: cover;
+
+    background-position: center;
+
+    position: relative;
+
+}
+
+
+.foto::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            transparent,
+            rgba(0,0,0,0.55)
+        );
+
+}
+
+
+.tag-destino {
+
+    position: absolute;
+
+    z-index: 2;
+
+    bottom: 15px;
+
+    left: 15px;
+
+    color: white;
+
+    font-weight: bold;
+
+    font-size: 18px;
+
+}
+
+
+/* INFORMAÇÕES */
+
+.informacoes {
+
+    padding: 22px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+}
+
+
+.topo-card {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+
+.companhia {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    font-weight: bold;
+
+}
+
+
+.logo-companhia {
+
+    width: 35px;
+
+    height: 35px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #e0f2fe;
+
+    color: #0284c7;
+
+    font-weight: bold;
+
+}
+
+
+.classe {
+
+    font-size: 13px;
+
+    color: #777;
+
+    background: #f3f4f6;
+
+    padding: 6px 10px;
+
+    border-radius: 20px;
+
+}
+
+
+/* HORÁRIOS */
+
+.horarios {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    margin: 20px 0;
+
+}
+
+
+.hora {
+
+    font-size: 25px;
+
+    font-weight: bold;
+
+}
+
+
+.aeroporto {
+
+    color: #777;
+
+    font-size: 13px;
+
+    margin-top: 4px;
+
+}
+
+
+.duracao {
+
+    flex: 1;
+
+    text-align: center;
+
+    color: #777;
+
+    font-size: 12px;
+
+}
+
+
+.linha {
+
+    height: 1px;
+
+    background: #d1d5db;
+
+    margin: 7px 0;
+
+    position: relative;
+
+}
+
+
+.linha::after {
+
+    content: "✈";
+
+    position: absolute;
+
+    left: 50%;
+
+    top: -9px;
+
+    transform: translateX(-50%);
+
+    background: white;
+
+    padding: 0 8px;
+
+    color: #0284c7;
+
+}
+
+
+/* RODAPÉ */
+
+.rodape-card {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    border-top: 1px solid #eee;
+
+    padding-top: 15px;
+
+}
+
+
+.detalhes {
+
+    color: #777;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+
+}
+
+
+.preco {
+
+    text-align: right;
+
+}
+
+
+.preco small {
+
+    display: block;
+
+    color: #777;
+
+    font-size: 11px;
+
+}
+
+
+.preco strong {
+
+    font-size: 25px;
+
+    color: #111;
+
+}
+
+
+.botao-escolher {
+
+    margin-left: 15px;
+
+    border: none;
+
+    background: #0284c7;
+
+    color: white;
+
+    padding: 12px 20px;
+
+    border-radius: 10px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+}
+
+
+.botao-escolher:hover {
+
+    background: #0369a1;
+
+}
+
+
+/* RESPONSIVO */
+
+@media(max-width: 850px) {
+
+    .area-principal {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .filtros {
+
+        display: none;
+
+    }
+
+    .card-voo {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .foto {
+
+        min-height: 190px;
+
+    }
+
+}
+
+
+@media(max-width: 700px) {
+
+    .hero h1 {
+
+        font-size: 45px;
+
+    }
+
+    .search-box {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .continuar {
+
+        min-height: 60px;
+
+    }
+
+    .rota {
+
+        font-size: 18px;
+
+    }
+
 }
 
 </style>
 
 </head>
 
+
 <body>
+
+
+<!-- ==================================================
+     PARTE 1
+     PÁGINA INICIAL
+================================================== -->
+
+<section id="pagina-inicial">
+
 
 <header>
 
-<img src="https://i.postimg.cc/tg24cwSF/infoggamers-logo-v4-697-min.png" class="logo">
+    <div class="logo">
+        Viaja<span>í</span>
+    </div>
 
-<input type="text" placeholder="Pesquisar jogo..." id="barraPesquisa" class="pesquisa" onkeyup="buscar(this.value)">
+    <button class="minhas-viagens">
+        Minhas viagens
+    </button>
 
 </header>
 
-<div class="grid" id="listaJogos"></div>
 
-<div class="jogo" id="paginaJogo">
+<div class="hero">
 
-<div class="voltarTopo" onclick="voltar()"><</div>
+<div class="hero-container">
 
-<img id="imgJogo" class="banner">
 
-<div class="player">
+<div class="tag">
+    ✈️ Sua próxima viagem começa aqui
+</div>
 
-<img id="capaMusica" class="capaMusica">
 
-<div class="playerInfo">
+<h1>
+    Para onde vamos?
+</h1>
 
-<div id="nomeMusica"></div>
 
-<div class="barraMusica" onclick="mudarTempo(event)">
-<div id="progressoMusica"></div>
-<div id="bolinha" class="bolinha"></div>
+<p class="subtitulo">
+    Escolha seu local de partida e o destino dos seus sonhos.
+</p>
+
+
+<div class="search-box">
+
+
+<!-- ORIGEM -->
+
+<div class="campo">
+
+<label>
+    Saindo de
+</label>
+
+<div class="input-area">
+
+<span class="icone">
+    📍
+</span>
+
+<input
+    id="origem-input"
+    type="text"
+    placeholder="Ex: São Paulo, SP"
+    autocomplete="off"
+    oninput="buscarCidade('origem')"
+>
+
+</div>
+
+
+<div
+    id="sugestoes-origem"
+    class="sugestoes-cidades">
 </div>
 
 </div>
 
-<button onclick="toggleMusica()" class="botaoMusica">⏸</button>
+
+<!-- DESTINO -->
+
+<div class="campo">
+
+<label>
+    Destino
+</label>
+
+<div class="input-area">
+
+<span class="icone">
+    ✈️
+</span>
+
+<input
+    id="destino-input"
+    type="text"
+    placeholder="Ex: Rio de Janeiro, RJ"
+    autocomplete="off"
+    oninput="buscarCidade('destino')"
+>
 
 </div>
 
-<audio id="musicaJogo" loop></audio>
-  
-<h1 id="nomeJogo"></h1>
-<p id="notaJogo"></p>
 
-<div class="caixa">
-<h2>Descrição</h2>
-<p id="descJogo"></p>
-</div>
-
-<div class="caixa">
-<h2>Trailer</h2>
-<iframe id="trailerJogo" class="trailer" allowfullscreen></iframe>
-</div>
-
-<div class="caixa">
-<h2>Informações</h2>
-<ul id="infoJogo"></ul>
-</div>
-
-<div class="caixa">
-<h2>Galeria</h2>
-<div id="galeriaJogo" class="galeria"></div>
-</div>
-
-<div class="caixa">
-<h2>Jogos semelhantes</h2>
-<div id="semelhantes" class="grid"></div>
+<div
+    id="sugestoes-destino"
+    class="sugestoes-cidades">
 </div>
 
 </div>
 
-<footer>
-INFOGGAMERS © 2026 by gujob
-</footer>
+
+<button
+    class="continuar"
+    onclick="continuar()"
+>
+    Continuar →
+</button>
+
+
+</div>
+
+
+<div
+    id="erro"
+    class="erro"
+>
+    ⚠️ Preencha o local de saída e o destino.
+</div>
+
+
+<div class="sugestoes">
+
+
+<button
+    class="sugestao"
+    onclick="selecionarDestino('Rio de Janeiro - RJ')"
+>
+    🏖️ Rio de Janeiro
+</button>
+
+
+<button
+    class="sugestao"
+    onclick="selecionarDestino('Florianópolis - SC')"
+>
+    🌊 Florianópolis
+</button>
+
+
+<button
+    class="sugestao"
+    onclick="selecionarDestino('Gramado - RS')"
+>
+    🏔️ Gramado
+</button>
+
+
+<button
+    class="sugestao"
+    onclick="selecionarDestino('Salvador - BA')"
+>
+    ☀️ Salvador
+</button>
+
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ==================================================
+     PARTE 2
+     RESULTADOS
+================================================== -->
+
+<section id="pagina-voos">
+
+
+<header class="header-voos">
+
+    <div class="logo">
+        Viaja<span>í</span>
+    </div>
+
+    <button
+        class="minhas-viagens"
+        onclick="voltarInicio()"
+    >
+        ← Alterar busca
+    </button>
+
+</header>
+
+
+<section class="busca-resumo">
+
+
+<div class="rota">
+
+<span id="origem-escolhida">
+    São Paulo
+</span>
+
+<span class="seta">
+    →
+</span>
+
+<span id="destino-escolhido">
+    Rio de Janeiro
+</span>
+
+</div>
+
+
+<div class="info-busca">
+    ✈️ Voos disponíveis • 1 passageiro
+</div>
+
+
+</section>
+
+
+<main class="conteudo">
+
+
+<div class="titulo">
+
+<h1>
+    Escolha seu voo
+</h1>
+
+<p>
+    Encontramos algumas opções para sua viagem.
+</p>
+
+</div>
+
+
+<div class="area-principal">
+
+
+<!-- FILTROS -->
+
+<aside class="filtros">
+
+<h3>
+    Filtrar voos
+</h3>
+
+
+<div class="filtro">
+
+<strong>
+    Horário
+</strong>
+
+<label>
+    <input type="checkbox">
+    Manhã
+</label>
+
+<label>
+    <input type="checkbox">
+    Tarde
+</label>
+
+<label>
+    <input type="checkbox">
+    Noite
+</label>
+
+</div>
+
+
+<div class="filtro">
+
+<strong>
+    Escalas
+</strong>
+
+<label>
+    <input type="checkbox">
+    Direto
+</label>
+
+<label>
+    <input type="checkbox">
+    1 escala
+</label>
+
+</div>
+
+
+<div class="filtro">
+
+<strong>
+    Companhias
+</strong>
+
+<label>
+    <input type="checkbox">
+    LATAM
+</label>
+
+<label>
+    <input type="checkbox">
+    GOL
+</label>
+
+<label>
+    <input type="checkbox">
+    Azul
+</label>
+
+</div>
+
+</aside>
+
+
+<!-- LISTA DE VOOS -->
+
+<section class="voos">
+
+
+<!-- VOO 1 -->
+
+<div class="card-voo">
+
+
+<div
+class="foto"
+style="
+background-image:
+url('https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&w=900&q=80');
+"
+>
+
+<div class="tag-destino">
+    Rio de Janeiro 🇧🇷
+</div>
+
+</div>
+
+
+<div class="informacoes">
+
+
+<div class="topo-card">
+
+<div class="companhia">
+
+<div class="logo-companhia">
+    LA
+</div>
+
+LATAM Airlines
+
+</div>
+
+
+<div class="classe">
+    Econômica
+</div>
+
+</div>
+
+
+<div class="horarios">
+
+
+<div>
+
+<div class="hora">
+    08:10
+</div>
+
+<div class="aeroporto">
+    GRU
+</div>
+
+</div>
+
+
+<div class="duracao">
+
+1h 05min
+
+<div class="linha"></div>
+
+Voo direto
+
+</div>
+
+
+<div>
+
+<div class="hora">
+    09:15
+</div>
+
+<div class="aeroporto">
+    SDU
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="rodape-card">
+
+
+<div class="detalhes">
+
+✈️ Voo direto<br>
+
+🧳 Bagagem de mão incluída<br>
+
+📶 Wi-Fi disponível
+
+</div>
+
+
+<div class="preco">
+
+<small>
+    A partir de
+</small>
+
+<strong>
+    R$ 389
+</strong>
+
+
+<button
+class="botao-escolher"
+onclick="escolherVoo('LATAM Airlines','08:10','09:15','R$ 389')"
+>
+    Escolher
+</button>
+
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- VOO 2 -->
+
+<div class="card-voo">
+
+
+<div
+class="foto"
+style="
+background-image:
+url('https://images.unsplash.com/photo-1544986581-efac024faf62?auto=format&fit=crop&w=900&q=80');
+"
+>
+
+<div class="tag-destino">
+    Rio de Janeiro 🇧🇷
+</div>
+
+</div>
+
+
+<div class="informacoes">
+
+
+<div class="topo-card">
+
+<div class="companhia">
+
+<div class="logo-companhia">
+    G3
+</div>
+
+GOL Linhas Aéreas
+
+</div>
+
+
+<div class="classe">
+    Econômica
+</div>
+
+</div>
+
+
+<div class="horarios">
+
+
+<div>
+
+<div class="hora">
+    10:40
+</div>
+
+<div class="aeroporto">
+    CGH
+</div>
+
+</div>
+
+
+<div class="duracao">
+
+1h 00min
+
+<div class="linha"></div>
+
+Voo direto
+
+</div>
+
+
+<div>
+
+<div class="hora">
+    11:40
+</div>
+
+<div class="aeroporto">
+    SDU
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="rodape-card">
+
+
+<div class="detalhes">
+
+✈️ Voo direto<br>
+
+🧳 Bagagem de mão incluída<br>
+
+📶 Wi-Fi disponível
+
+</div>
+
+
+<div class="preco">
+
+<small>
+    A partir de
+</small>
+
+<strong>
+    R$ 427
+</strong>
+
+
+<button
+class="botao-escolher"
+onclick="escolherVoo('GOL Linhas Aéreas','10:40','11:40','R$ 427')"
+>
+    Escolher
+</button>
+
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- VOO 3 -->
+
+<div class="card-voo">
+
+
+<div
+class="foto"
+style="
+background-image:
+url('https://images.unsplash.com/photo-1530789253388-582c481c54b0?auto=format&fit=crop&w=900&q=80');
+"
+>
+
+<div class="tag-destino">
+    Rio de Janeiro 🇧🇷
+</div>
+
+</div>
+
+
+<div class="informacoes">
+
+
+<div class="topo-card">
+
+<div class="companhia">
+
+<div class="logo-companhia">
+    AD
+</div>
+
+Azul Linhas Aéreas
+
+</div>
+
+
+<div class="classe">
+    Econômica
+</div>
+
+</div>
+
+
+<div class="horarios">
+
+
+<div>
+
+<div class="hora">
+    14:25
+</div>
+
+<div class="aeroporto">
+    VCP
+</div>
+
+</div>
+
+
+<div class="duracao">
+
+1h 10min
+
+<div class="linha"></div>
+
+Voo direto
+
+</div>
+
+
+<div>
+
+<div class="hora">
+    15:35
+</div>
+
+<div class="aeroporto">
+    SDU
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="rodape-card">
+
+
+<div class="detalhes">
+
+✈️ Voo direto<br>
+
+🧳 Bagagem de mão incluída<br>
+
+📶 Wi-Fi disponível
+
+</div>
+
+
+<div class="preco">
+
+<small>
+    A partir de
+</small>
+
+<strong>
+    R$ 451
+</strong>
+
+
+<button
+class="botao-escolher"
+onclick="escolherVoo('Azul Linhas Aéreas','14:25','15:35','R$ 451')"
+>
+    Escolher
+</button>
+
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- VOO 4 -->
+
+<div class="card-voo">
+
+
+<div
+class="foto"
+style="
+background-image:
+url('https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=80');
+"
+>
+
+<div class="tag-destino">
+    Rio de Janeiro 🇧🇷
+</div>
+
+</div>
+
+
+<div class="informacoes">
+
+
+<div class="topo-card">
+
+<div class="companhia">
+
+<div class="logo-companhia">
+    LA
+</div>
+
+LATAM Airlines
+
+</div>
+
+
+<div class="classe">
+    Econômica
+</div>
+
+</div>
+
+
+<div class="horarios">
+
+
+<div>
+
+<div class="hora">
+    18:30
+</div>
+
+<div class="aeroporto">
+    GRU
+</div>
+
+</div>
+
+
+<div class="duracao">
+
+1h 05min
+
+<div class="linha"></div>
+
+Voo direto
+
+</div>
+
+
+<div>
+
+<div class="hora">
+    19:35
+</div>
+
+<div class="aeroporto">
+    SDU
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="rodape-card">
+
+
+<div class="detalhes">
+
+✈️ Voo direto<br>
+
+🧳 Bagagem de mão incluída<br>
+
+📶 Wi-Fi disponível
+
+</div>
+
+
+<div class="preco">
+
+<small>
+    A partir de
+</small>
+
+<strong>
+    R$ 398
+</strong>
+
+
+<button
+class="botao-escolher"
+onclick="escolherVoo('LATAM Airlines','18:30','19:35','R$ 398')"
+>
+    Escolher
+</button>
+
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+
+</section>
+
+</div>
+
+</main>
+
+</section>
+
 
 <script>
 
-let jogos=[
+/* =========================================
+   CIDADES
+========================================= */
 
-{
-nome:"Red Dead Redemption 2",
-nota:"⭐ 9.8 | 2018",
-desc:"Red Dead Redemption 2 leva você para o final da era do Velho Oeste em um mundo aberto gigantesco cheio de detalhes e histórias. Você joga como Arthur Morgan, um fora da lei membro da gangue Van der Linde, enquanto tenta sobreviver em um mundo que está mudando rapidamente. Entre assaltos, caçadas, perseguições a cavalo e encontros inesperados pelo mapa, o jogo entrega uma das experiências mais imersivas já criadas.",
-capa:"https://i.postimg.cc/d3yT6VvJ/download-(5).jpg",
-banner:"https://i.postimg.cc/W1277CWg/rdr2-banner.webp",
-trailer:"https://www.youtube.com/embed/eaW0tYpxyp0",
+const cidades = [
 
-info:[
-"Estúdio: Rockstar Games",
-"Gênero: Ação / Aventura / Mundo aberto",
-"Modo: Singleplayer / Online",
-"Plataformas: PC, PlayStation, Xbox"
-],
-galeria:[
-"https://i.postimg.cc/Qtv0hkpf/download-(37).jpg",
-"https://i.postimg.cc/RCngGymq/images-(3).jpg",
-"https://i.postimg.cc/4NkB0P46/download-(36).jpg"
-],
-semelhantes:["GTA V","Far Cry 3","Skyrim"]
-},
+["São Paulo","SP"],
+["Santos","SP"],
+["Campinas","SP"],
+["Guarulhos","SP"],
+["São José dos Campos","SP"],
 
-{
-nome:"Minecraft",
-nota:"⭐ 9.0 | 2011",
-desc:"Minecraft é um sandbox onde a criatividade é o limite. Em um mundo feito de blocos gerado proceduralmente, você pode construir cidades gigantes, explorar cavernas profundas, enfrentar monstros ou simplesmente criar qualquer coisa que imaginar.",
-capa:"https://i.postimg.cc/qRgJcDrF/download-(3).jpg",
-banner:"https://i.postimg.cc/qRmg3jm8/minecraft-1920-x-1080-background-7nlzxzrjiw6rz8qs.jpg",
-trailer:"https://www.youtube.com/embed/MmB9b5njVbA",
+["Rio de Janeiro","RJ"],
+["Niterói","RJ"],
+["Petrópolis","RJ"],
+["Angra dos Reis","RJ"],
 
-info:[
-"Estúdio: Mojang",
-"Gênero: Sandbox / Sobrevivência",
-"Modo: Singleplayer / Multiplayer",
-"Plataformas: PC, Console, Mobile"
-],
-galeria:[
-"https://i.postimg.cc/LsK9Yrmn/images-(4).jpg",
-"https://i.postimg.cc/7ZTPLx8Q/images-(5).jpg",
-"https://i.postimg.cc/X7P73rhc/images-(6).jpg"
-],
-musica:"https://files.catbox.moe/vtv41q.mp3",
-musicaNome:"Minecraft - aria math",
-musicaCapa:"https://i.postimg.cc/c4v6WWXc/download-(54).jpg",
-semelhantes:["Subnautica","Skyrim","Zelda BOTW"]
-},
+["Belo Horizonte","MG"],
+["Uberlândia","MG"],
+["Juiz de Fora","MG"],
 
-{
-nome:"GTA V",
-nota:"⭐ 9.7 | 2013",
-desc:"Grand Theft Auto V coloca você na enorme cidade de Los Santos, onde crime, dinheiro e poder estão em todos os lugares. A história acompanha três protagonistas com vidas diferentes que acabam envolvidos em grandes assaltos.",
-capa:"https://i.postimg.cc/tCcPfCNh/download.png",
-banner:"https://i.postimg.cc/L68BwWKH/gta-5-1920x1080-wele1z8lanjgq3kb.jpg",
-trailer:"https://www.youtube.com/embed/QkkoHAzjnUs",
-dicas:[
-"Explore o mapa para encontrar segredos escondidos.",
-"Invista na bolsa dentro do jogo.",
-"Missões secundárias rendem dinheiro e habilidades."
-],
-info:[
-"Estúdio: Rockstar Games",
-"Gênero: Ação / Mundo aberto",
-"Modo: Singleplayer / Online",
-"Plataformas: PC, PlayStation, Xbox"
-],
-galeria:[
-"https://i.postimg.cc/nhV5d2TX/images-(7).jpg",
-"https://i.postimg.cc/wjWrnNbr/download-(39).jpg",
-"https://i.postimg.cc/6QyPKQkZ/download-(38).jpg"
-],
-musica:"https://files.catbox.moe/2iqviu.mp3",
-musicaNome:"GTA V - midnight city",
-musicaCapa:"https://i.postimg.cc/9FXZ7zCZ/download-(55).jpg",
-semelhantes:["Red Dead Redemption 2","Cyberpunk 2077","Far Cry 3"]
-},
+["Curitiba","PR"],
+["Londrina","PR"],
+["Foz do Iguaçu","PR"],
 
-{
-nome:"Rainbow Six Siege",
-nota:"⭐ 9.0 | 2015",
-desc:"Rainbow Six Siege é um shooter tático focado em estratégia e trabalho em equipe. Jogadores usam operadores especiais com habilidades únicas.",
-capa:"https://i.postimg.cc/hG6GZwqY/download-(46).jpg",
-banner:"https://i.postimg.cc/W1DLY4bL/download-(50).jpg",
-trailer:"https://www.youtube.com/embed/6wlvYh0h63k",
-dicas:[
-"Use drones para localizar inimigos.",
-"Jogue sempre em equipe.",
-"Use operadores diferentes dependendo do mapa."
-],
-info:[
-"Estúdio: Ubisoft",
-"Gênero: FPS Tático",
-"Modo: Multiplayer",
-"Plataformas: PC, PlayStation, Xbox"
-],
-galeria:[
-"https://i.postimg.cc/R0kMLH70/download-(48).jpg",
-"https://i.postimg.cc/GtqwV8yh/rainbow-six-siege-08.jpg",
-"https://i.postimg.cc/PJ4THVBj/download-(49).jpg"
-],
-min:["CPU: Intel i5","RAM: 8GB","GPU: GTX 960"],
-rec:["CPU: Intel i7","RAM: 16GB","GPU: RTX 2060"],
-cur:[
-"Um dos FPS competitivos mais populares."
-],
-semelhantes:["Valorant","Counter-Strike 2","Halo Infinite"]
-},
+["Florianópolis","SC"],
+["Joinville","SC"],
+["Balneário Camboriú","SC"],
+["Blumenau","SC"],
 
-{
-nome:"The Witcher 3",
-nota:"⭐ 9.6 | 2015",
-desc:"Você assume o papel de Geralt de Rívia, um caçador de monstros profissional em um mundo devastado por guerras e criaturas perigosas. Durante sua jornada, Geralt precisa encontrar Ciri enquanto enfrenta inimigos poderosos.",
-capa:"https://i.postimg.cc/C1DD0srd/3f7ee6aa3482b514bd443e116022b038a9728f017916ed37da3f09f731a7d5f2.avif",
-banner:"https://i.postimg.cc/SsKxkcyX/the-witcher-3-wallpaper-6k59j1ddxvf3vk3j.jpg",
-trailer:"https://www.youtube.com/embed/c0i88t0Kacs",
-dicas:[
-"Prepare poções antes de enfrentar monstros.",
-"Faça missões secundárias para ganhar dinheiro.",
-"Explore vilas para contratos de monstros."
-],
-info:[
-"Estúdio: CD Projekt Red",
-"Gênero: RPG / Mundo aberto",
-"Modo: Singleplayer",
-"Plataformas: PC, PlayStation, Xbox, Switch"
-],
-galeria:[
-"cole_aqui",
-"cole_aqui",
-"cole_aqui"
-],
-min:["CPU: Intel i5","RAM: 6GB","GPU: GTX 660"],
-rec:["CPU: Intel i7","RAM: 16GB","GPU: GTX 1070"],
-cur:["Ganhou mais de 250 prêmios de jogo do ano."],
-semelhantes:["Skyrim","Elden Ring","Assassin's Creed Valhalla"]
-},
+["Porto Alegre","RS"],
+["Gramado","RS"],
+["Canela","RS"],
 
-{
-nome:"Elden Ring",
-nota:"⭐ 9.6 | 2022",
-desc:"Elden Ring é um RPG de ação em mundo aberto desenvolvido pela FromSoftware. O jogo coloca você em um reino destruído cheio de monstros gigantes e chefes épicos.",
-capa:"https://i.postimg.cc/13tqXQ7W/a-Ghopp3MHppi7koo-GE2Dtt8C.avif",
-banner:"https://i.postimg.cc/nLFHGqQh/wp15909881.jpg",
-trailer:"https://www.youtube.com/embed/E3Huy2cdih0",
-dicas:[
-"Explore o mapa antes de enfrentar chefes.",
-"Use invocações para ajudar nas batalhas.",
-"Melhore suas armas regularmente."
-],
-info:[
-"Estúdio: FromSoftware",
-"Gênero: RPG / Soulslike",
-"Modo: Singleplayer / Online",
-"Plataformas: PC, PlayStation, Xbox"
-],
-galeria:[
-"cole_aqui",
-"cole_aqui",
-"cole_aqui"
-],
-min:["CPU: Intel i5","RAM: 12GB","GPU: GTX 1060"],
-rec:["CPU: Intel i7","RAM: 16GB","GPU: RTX 2070"],
-cur:["A história teve colaboração de George R. R. Martin."],
-semelhantes:["Dark Souls 3","Skyrim","The Witcher 3"]
-},
+["Salvador","BA"],
+["Porto Seguro","BA"],
+["Ilhéus","BA"],
 
-{
-nome:"God of War",
-nota:"⭐ 9.8 | 2018",
-desc:"God of War acompanha Kratos em uma nova fase de sua vida na mitologia nórdica ao lado de seu filho Atreus. O jogo mistura combate brutal, puzzles e uma narrativa emocionante.",
-capa:"https://i.postimg.cc/sfWdFGVt/download-(9).jpg",
-banner:"https://i.postimg.cc/Mp07nZTr/716161.jpg",
-trailer:"https://www.youtube.com/embed/K0u_kAWLJOA",
-dicas:[
-"Explore áreas opcionais para encontrar equipamentos.",
-"Use o machado Leviatã estrategicamente.",
-"Melhore habilidades de Kratos e Atreus."
-],
-info:[
-"Estúdio: Santa Monica Studio",
-"Gênero: Ação / Aventura",
-"Modo: Singleplayer",
-"Plataformas: PC, PlayStation"
-],
-galeria:[
-"cole_aqui",
-"cole_aqui",
-"cole_aqui"
-],
-min:["CPU: Intel i5","RAM: 8GB","GPU: GTX 960"],
-rec:["CPU: Intel i7","RAM: 16GB","GPU: GTX 1070"],
-cur:["Venceu o prêmio de Jogo do Ano em 2018."],
-semelhantes:["Horizon Forbidden West","Elden Ring","Assassin's Creed Valhalla"]
-},
+["Recife","PE"],
+["Olinda","PE"],
 
-{
-nome:"Far Cry 3",
-nota:"⭐ 9.4 | 2012",
-desc:"Far Cry 3 coloca você em uma ilha dominada por piratas perigosos. Para sobreviver, você precisa explorar o ambiente, capturar bases inimigas e enfrentar o icônico vilão Vaas.",
-capa:"https://i.postimg.cc/6qJP6z9b/download-(11).jpg",
-banner:"https://i.postimg.cc/d0K5fS7f/328238.jpg",
-trailer:"https://www.youtube.com/embed/J6gnOVJsCsM",
-dicas:[
-"Capture torres para revelar o mapa.",
-"Cace animais para melhorar equipamentos.",
-"Use furtividade sempre que possível."
-],
-info:[
-"Estúdio: Ubisoft",
-"Gênero: FPS / Mundo aberto",
-"Modo: Singleplayer",
-"Plataformas: PC, PlayStation, Xbox"
-],
-galeria:[
-"cole_aqui",
-"cole_aqui",
-"cole_aqui"
-],
-min:["CPU: Intel i3","RAM: 4GB","GPU: GTX 460"],
-rec:["CPU: Intel i5","RAM: 8GB","GPU: GTX 760"],
-cur:["O vilão Vaas virou um dos personagens mais famosos dos games."],
-semelhantes:["GTA V","Red Dead Redemption 2","Battlefield 6"]
-},
+["Fortaleza","CE"],
+["Natal","RN"],
+["João Pessoa","PB"],
+["Maceió","AL"],
+["Aracaju","SE"],
 
-{
-nome:"Subnautica",
-nota:"⭐ 9.2 | 2018",
-desc:"Subnautica é um jogo de sobrevivência em um planeta oceânico alienígena. Após um acidente, você precisa explorar mares profundos, construir bases submarinas e descobrir mistérios escondidos nas profundezas.",
-capa:"https://i.postimg.cc/Hx08vPqq/download-(51).jpg",
-banner:"https://i.postimg.cc/mrCPh5gj/thumb-1920-784277.jpg",
-trailer:"https://www.youtube.com/embed/Rz2SNm8VguE",
-dicas:[
-"Gerencie bem o oxigênio.",
-"Construa bases submarinas.",
-"Explore cavernas profundas."
-],
-info:[
-"Estúdio: Unknown Worlds",
-"Gênero: Sobrevivência / Exploração",
-"Modo: Singleplayer",
-"Plataformas: PC, PlayStation, Xbox"
-],
-galeria:[
-"https://i.postimg.cc/FHJRnB3s/images-(9).jpg",
-"https://i.postimg.cc/B6NQK99h/download-(52).jpg",
-"https://i.postimg.cc/N060Q2dP/download-(53).jpg"
-],
-min:["CPU: Intel i5","RAM: 8GB","GPU: GTX 760"],
-rec:["CPU: Intel i7","RAM: 16GB","GPU: GTX 1060"],
-cur:["Considerado um dos melhores jogos de exploração oceânica."],
-semelhantes:["Minecraft","Skyrim","Zelda BOTW"]
-},
+["Brasília","DF"],
+["Goiânia","GO"],
+["Cuiabá","MT"],
+["Campo Grande","MS"],
 
-{
-nome:"Cyberpunk 2077",
-nota:"⭐ 8.8 | 2020",
-desc:"Cyberpunk 2077 leva você para Night City, uma metrópole futurista dominada por tecnologia, corporações e mercenários.",
-capa:"https://i.postimg.cc/c1R9MR1v/download-(13).jpg",
-banner:"https://i.postimg.cc/8ck30XYs/988021.jpg",
-trailer:"https://www.youtube.com/embed/LembwKDo1Dk",
-dicas:[
-"Melhore implantes cibernéticos.",
-"Faça side quests para ganhar dinheiro.",
-"Explore todos os distritos da cidade."
-],
-info:[
-"Estúdio: CD Projekt Red",
-"Gênero: RPG / Mundo aberto",
-"Modo: Singleplayer",
-"Plataformas: PC, PlayStation, Xbox"
-],
-galeria:[
-"cole_aqui",
-"cole_aqui",
-"cole_aqui"
-],
-min:["CPU: Intel i5","RAM: 8GB","GPU: GTX 780"],
-rec:["CPU: Intel i7","RAM: 16GB","GPU: RTX 2060"],
-cur:["Night City é uma das cidades mais detalhadas já feitas em jogos."],
-semelhantes:["GTA V","The Witcher 3","Halo Infinite"]
-},
+["Manaus","AM"],
+["Belém","PA"],
 
-{
-nome:"Zelda BOTW",
-nota:"⭐ 9.7 | 2017",
-desc:"The Legend of Zelda: Breath of the Wild revolucionou os jogos de mundo aberto ao dar ao jogador liberdade total para explorar o reino de Hyrule. Você controla Link, que desperta após cem anos de sono para derrotar Calamity Ganon e salvar o reino. O jogo permite escalar montanhas, planar pelo mapa, resolver puzzles em templos e enfrentar inimigos de inúmeras formas. Cada região possui clima, inimigos e desafios diferentes, tornando a exploração extremamente recompensadora.",
-capa:"https://i.postimg.cc/7PNvY82s/download-(15).jpg",
-banner:"https://i.postimg.cc/x1gPsT2C/710496.jpg",
-trailer:"https://www.youtube.com/embed/zw47_q9wbBE",
-dicas:[
-"Use o ambiente a seu favor, como empurrar pedras ou usar fogo contra inimigos.",
-"Cozinhar ingredientes diferentes cria comidas que aumentam vida e resistência.",
-"Explore torres para revelar novas áreas do mapa.",
-"Armas quebram com o uso, então sempre carregue várias."
-],
-info:[
-"Estúdio: Nintendo",
-"Gênero: Ação / Aventura / Mundo aberto",
-"Modo: Singleplayer",
-"Plataformas: Nintendo Switch, Wii U"
-],
-galeria:[
-"cole_aqui",
-"cole_aqui",
-"cole_aqui"
-],
-min:["Nintendo Switch"],
-rec:["Nintendo Switch"],
-cur:[
-"Ganhou diversos prêmios de Jogo do Ano em 2017.",
-"O jogo permite resolver puzzles de várias formas diferentes."
-],
-semelhantes:["Skyrim","Horizon Forbidden West","Minecraft"]
-},
+["Vitória","ES"],
 
-{
-nome:"Resident Evil 4",
-nota:"⭐ 9.6 | 2005",
-desc:"Resident Evil 4 é um dos jogos mais influentes da história do survival horror. Você controla Leon S. Kennedy em uma missão para resgatar a filha do presidente dos Estados Unidos em uma vila isolada da Europa. O jogo mistura ação intensa, gerenciamento de recursos e momentos de tensão constantes enquanto você enfrenta inimigos perigosos e criaturas mutantes.",
-capa:"https://i.postimg.cc/QCfngDQz/download-(17).jpg",
-banner:"https://i.postimg.cc/mrt78Yj5/thumb-1920-1244847.jpg",
-trailer:"https://www.youtube.com/embed/4xuXkVzBdJQ",
-dicas:[
-"Economize munição sempre que possível.",
-"Use a faca para finalizar inimigos caídos.",
-"Explore todas as áreas para encontrar tesouros escondidos.",
-"Melhore suas armas com o mercador."
-],
-info:[
-"Estúdio: Capcom",
-"Gênero: Survival Horror / Ação",
-"Modo: Singleplayer",
-"Plataformas: PC, PlayStation, Xbox, Nintendo"
-],
-galeria:[
-"cole_aqui",
-"cole_aqui",
-"cole_aqui"
-],
-min:["CPU: Intel i5","RAM: 8GB","GPU: GTX 1050"],
-rec:["CPU: Intel i7","RAM: 16GB","GPU: RTX 2060"],
-cur:[
-"Revolucionou o gênero survival horror.",
-"A câmera por cima do ombro virou padrão em muitos jogos."
-],
-semelhantes:["The Last of Us","Dark Souls 3","Far Cry 3"]
-},
+["Buenos Aires","Argentina"],
+["Santiago","Chile"],
+["Montevidéu","Uruguai"],
+["Lima","Peru"],
 
-{
-nome:"Dark Souls 3",
-nota:"⭐ 9.5 | 2016",
-desc:"Dark Souls 3 é um RPG de ação extremamente desafiador que coloca o jogador em um mundo sombrio cheio de criaturas perigosas e chefes memoráveis. A exploração, o combate preciso e a narrativa indireta fazem dele um dos jogos mais marcantes da série Souls.",
-capa:"https://i.postimg.cc/zXPcVJXt/download-(19).jpg",
-banner:"https://i.postimg.cc/j2Zjp9d8/thumb-1920-1073940.jpg",
-trailer:"https://www.youtube.com/embed/cWBwFhUv1-8",
-dicas:[
-"Aprenda os padrões de ataque dos chefes.",
-"Gerencie sua estamina com cuidado.",
-"Use escudos ou esquivas dependendo do inimigo.",
-"Explore áreas secretas para encontrar equipamentos."
-],
-info:[
-"Estúdio: FromSoftware",
-"Gênero: RPG / Soulslike",
-"Modo: Singleplayer / Online",
-"Plataformas: PC, PlayStation, Xbox"
-],
-galeria:[
-"cole_aqui",
-"cole_aqui",
-"cole_aqui"
-],
-semelhantes:["Elden Ring","Skyrim","The Witcher 3"]
-},
+["Lisboa","Portugal"],
+["Madrid","Espanha"],
+["Paris","França"],
+["Londres","Reino Unido"],
+["Roma","Itália"],
 
-{
-nome:"Assassin's Creed Valhalla",
-nota:"⭐ 8.9 | 2020",
-desc:"Assassin's Creed Valhalla coloca você na pele de Eivor, um guerreiro viking que lidera seu clã para conquistar terras na Inglaterra medieval. O jogo combina exploração em mundo aberto, combates brutais e decisões que influenciam a história.",
-capa:"https://i.postimg.cc/JhCKktwB/download-(21).jpg",
-banner:"https://i.postimg.cc/k4yMSZ8P/assassins-creed-valhalla-tiswxpekr3su98uv.jpg",
-trailer:"https://www.youtube.com/embed/ssrNcwxALS4",
-dicas:[
-"Invada fortalezas para ganhar recursos.",
-"Melhore sua vila para desbloquear novas habilidades.",
-"Explore rios e cidades para encontrar equipamentos raros.",
-"Use armas diferentes para variar o estilo de combate."
-],
-info:[
-"Estúdio: Ubisoft",
-"Gênero: RPG / Mundo aberto",
-"Modo: Singleplayer",
-"Plataformas: PC, PlayStation, Xbox"
-],
-galeria:[
-"cole_aqui",
-"cole_aqui",
-"cole_aqui"
-],
-min:["CPU: Intel i5","RAM: 8GB","GPU: GTX 960"],
-rec:["CPU: Intel i7","RAM: 16GB","GPU: RTX 2070"],
-cur:[
-"O jogo se passa durante a invasão viking da Inglaterra.",
-"O mapa inclui regiões gigantes para explorar."
-],
-semelhantes:["The Witcher 3","Skyrim","God of War"]
-},
+["Nova York","Estados Unidos"],
+["Miami","Estados Unidos"],
+["Orlando","Estados Unidos"],
+["Los Angeles","Estados Unidos"],
 
-{
-nome:"Halo Infinite",
-nota:"⭐ 8.7 | 2021",
-desc:"Halo Infinite marca o retorno de Master Chief em uma nova aventura contra a facção Banished. O jogo apresenta uma campanha com mundo semi-aberto e um multiplayer competitivo que mantém a essência clássica da série Halo.",
-capa:"https://i.postimg.cc/bYVTRmc8/download-(23).jpg",
-banner:"https://i.postimg.cc/2jcrfn7x/Halo-Infinite-Campaign-Key-Art-CLEAN-1920x1080.jpg",
-trailer:"https://www.youtube.com/embed/PyMlV5_HRWk",
-dicas:[
-"Use o gancho para mobilidade e combate.",
-"Capture bases inimigas para obter equipamentos.",
-"Use diferentes armas dependendo do inimigo.",
-"Explore o mapa para encontrar melhorias."
-],
-info:[
-"Estúdio: 343 Industries",
-"Gênero: FPS",
-"Modo: Singleplayer / Multiplayer",
-"Plataformas: PC, Xbox"
-],
-galeria:[
-"cole_aqui",
-"cole_aqui",
-"cole_aqui"
-],
-min:["CPU: Intel i5","RAM: 8GB","GPU: GTX 1050"],
-rec:["CPU: Intel i7","RAM: 16GB","GPU: RTX 2070"],
-cur:[
-"Primeiro Halo com mapa semi aberto.",
-"O multiplayer é gratuito."
-],
-semelhantes:["Battlefield 6","Cyberpunk 2077","Far Cry 3"]
-},
+["Toronto","Canadá"],
+["Tóquio","Japão"],
+["Dubai","Emirados Árabes Unidos"]
 
-{
-nome:"Spider-Man",
-nota:"⭐ 9.4 | 2018",
-desc:"Marvel's Spider-Man coloca você no papel do Homem-Aranha em uma Nova York enorme e cheia de vida. Balance pelos prédios da cidade, enfrente vilões icônicos e acompanhe uma história emocionante protagonizada por Peter Parker.",
-capa:"https://i.postimg.cc/hvXVwqWn/download-(24).jpg",
-banner:"https://i.postimg.cc/0jbgNH0Z/thumb-1920-1389611.jpg",
-trailer:"https://www.youtube.com/embed/q4GdJVvdxss",
-dicas:[
-"Use ataques aéreos para combos mais fortes.",
-"Explore a cidade para encontrar mochilas escondidas.",
-"Melhore gadgets para facilitar combates.",
-"Complete desafios para desbloquear habilidades."
-],
-info:[
-"Estúdio: Insomniac Games",
-"Gênero: Ação / Mundo aberto",
-"Modo: Singleplayer",
-"Plataformas: PC, PlayStation"
-],
-galeria:[
-"cole_aqui",
-"cole_aqui",
-"cole_aqui"
-],
-min:["CPU: Intel i5","RAM: 8GB","GPU: GTX 950"],
-rec:["CPU: Intel i7","RAM: 16GB","GPU: RTX 2060"],
-cur:[
-"Considerado um dos melhores jogos de super-herói.",
-"A cidade possui centenas de atividades."
-],
-semelhantes:["Cyberpunk 2077","GTA V","The Last of Us"]
-},
+];
 
-{
-nome:"Forza Horizon 5",
-nota:"⭐ 9.3 | 2021",
-desc:"Forza Horizon 5 é um jogo de corrida em mundo aberto ambientado no México. O jogo oferece centenas de carros e paisagens incríveis para explorar enquanto participa de eventos, corridas e desafios.",
-capa:"https://i.postimg.cc/jCVnFw4N/download-(26).jpg",
-banner:"https://i.postimg.cc/nLHPzPHm/forza-horizon-5-4k-v3ybyfru6xi6yp0i.jpg",
-trailer:"https://www.youtube.com/embed/FYH9n37B7Yw",
-dicas:[
-"Explore o mapa para descobrir corridas secretas.",
-"Colecione carros para expandir sua garagem.",
-"Use ajustes de carro para melhorar desempenho.",
-"Complete desafios sazonais."
-],
-info:[
-"Estúdio: Playground Games",
-"Gênero: Corrida / Mundo aberto",
-"Modo: Singleplayer / Multiplayer",
-"Plataformas: PC, Xbox"
-],
-galeria:[
-"cole_aqui",
-"cole_aqui",
-"cole_aqui"
-],
-min:["CPU: Intel i5","RAM: 8GB","GPU: GTX 970"],
-rec:["CPU: Intel i7","RAM: 16GB","GPU: RTX 2070"],
-cur:[
-"O mapa é inspirado em paisagens reais do México.",
-"O jogo possui mais de 500 carros."
-],
-semelhantes:["GTA V","Cyberpunk 2077","Battlefield 6"]
-},
 
-{
-nome:"The Last of Us",
-nota:"⭐ 9.8 | 2013",
-desc:"The Last of Us conta a emocionante jornada de Joel e Ellie em um mundo devastado por uma pandemia. Misturando ação, stealth e narrativa profunda, o jogo se tornou um dos títulos mais marcantes da história.",
-capa:"https://i.postimg.cc/J4bQWMHk/download-(28).jpg",
-banner:"https://i.postimg.cc/SQ2kkJ1Q/thumb-1920-394511.jpg",
-trailer:"https://www.youtube.com/embed/W01L70IGBgE",
-dicas:[
-"Use stealth para evitar confrontos.",
-"Economize munição sempre que possível.",
-"Explore casas abandonadas.",
-"Use garrafas e tijolos para distrair inimigos."
-],
-info:[
-"Estúdio: Naughty Dog",
-"Gênero: Ação / Sobrevivência",
-"Modo: Singleplayer",
-"Plataformas: PC, PlayStation"
-],
-galeria:[
-"https://picsum.photos/seed/tlou1/500/300",
-"https://picsum.photos/seed/tlou2/500/300",
-"https://picsum.photos/seed/tlou3/500/300"
-],
-min:["CPU: Intel i5","RAM: 8GB","GPU: GTX 970"],
-rec:["CPU: Intel i7","RAM: 16GB","GPU: RTX 2070"],
-cur:[
-"Considerado um dos jogos mais emocionantes da história.",
-"A narrativa recebeu diversos prêmios."
-],
-semelhantes:["Resident Evil 4","Horizon Forbidden West","God of War"]
-},
+/* =========================================
+   NORMALIZAR TEXTO
+========================================= */
 
-{
-nome:"Horizon Forbidden West",
-nota:"⭐ 9.0 | 2022",
-desc:"Horizon Forbidden West continua a jornada de Aloy em um mundo dominado por máquinas gigantes. Explore florestas, desertos e cidades antigas enquanto descobre segredos de uma civilização perdida.",
-capa:"https://i.postimg.cc/cHgQkSNq/download-(30).jpg",
-banner:"https://i.postimg.cc/gJwFzTDK/thumb-1920-1148905.jpg",
-trailer:"https://www.youtube.com/embed/Lq594XmpPBg",
-dicas:[
-"Use armas elementais contra máquinas.",
-"Explore ruínas antigas para encontrar melhorias.",
-"Estude o comportamento das máquinas.",
-"Use furtividade para derrotar inimigos fortes."
-],
-info:[
-"Estúdio: Guerrilla Games",
-"Gênero: RPG / Mundo aberto",
-"Modo: Singleplayer",
-"Plataformas: PlayStation"
-],
-galeria:[
-"https://picsum.photos/seed/hz1/500/300",
-"https://picsum.photos/seed/hz2/500/300",
-"https://picsum.photos/seed/hz3/500/300"
-],
-min:["CPU: Intel i5","RAM: 8GB","GPU: GTX 1060"],
-rec:["CPU: Intel i7","RAM: 16GB","GPU: RTX 2070"],
-cur:[
-"O jogo possui dezenas de máquinas diferentes.",
-"O mapa é muito maior que o do primeiro jogo."
-],
-semelhantes:["God of War","Zelda BOTW","The Last of Us"]
-},
+function normalizar(texto) {
 
-{
-nome:"Battlefield 6",
-nota:"⭐ 9.1 | 2025",
-desc:"Battlefield 6 traz batalhas modernas massivas com mapas gigantes e destruição dinâmica. O jogo foca em combates multiplayer com veículos, aviões e equipes trabalhando juntas para conquistar objetivos.",
-capa:"https://i.postimg.cc/yYVDkHrW/download-(32).jpg",
-banner:"https://i.postimg.cc/sgKtpr0d/thumb-1920-1398991.jpg",
-trailer:"https://www.youtube.com/embed/ASzOzrB-a9E",
-dicas:[
-"Jogue sempre em equipe.",
-"Use veículos para dominar o campo de batalha.",
-"Controle objetivos para vencer partidas.",
-"Use cobertura constantemente."
-],
-info:[
-"Estúdio: EA DICE",
-"Gênero: FPS / Guerra",
-"Modo: Multiplayer",
-"Plataformas: PC, PlayStation, Xbox"
-],
-galeria:[
-"https://picsum.photos/seed/bf1/500/300",
-"https://picsum.photos/seed/bf2/500/300",
-"https://picsum.photos/seed/bf3/500/300"
-],
-min:["CPU: Intel i5","RAM: 8GB","GPU: GTX 1060"],
-rec:["CPU: Intel i7","RAM: 16GB","GPU: RTX 2070"],
-cur:[
-"Os mapas possuem destruição dinâmica.",
-"As partidas podem ter dezenas de jogadores."
-],
-semelhantes:["Halo Infinite","Far Cry 3","GTA V"]
-},
+    return texto
 
-{
-nome:"Skyrim",
-nota:"⭐ 9.7 | 2011",
-desc:"The Elder Scrolls V: Skyrim é um dos RPGs mais influentes já criados. Você assume o papel do Dragonborn, um herói capaz de enfrentar dragões e decidir o destino da província de Skyrim em um enorme mundo aberto cheio de aventuras.",
-capa:"https://i.postimg.cc/yYYN7Tk3/download-(34).jpg",
-banner:"https://i.postimg.cc/P5q6n8KQ/thumb-1920-428737.jpg",
-trailer:"https://www.youtube.com/embed/JSRtYpNRoN0",
-dicas:[
-"Explore cavernas e ruínas antigas.",
-"Entre em guildas para desbloquear missões únicas.",
-"Combine magia e armas.",
-"Use gritos de dragão em combate."
-],
-info:[
-"Estúdio: Bethesda Game Studios",
-"Gênero: RPG / Mundo aberto",
-"Modo: Singleplayer",
-"Plataformas: PC, PlayStation, Xbox, Nintendo Switch"
-],
-galeria:[
-"https://picsum.photos/seed/skyrim1/500/300",
-"https://picsum.photos/seed/skyrim2/500/300",
-"https://picsum.photos/seed/skyrim3/500/300"
-],
-min:["CPU: Intel i5","RAM: 4GB","GPU: GTX 470"],
-rec:["CPU: Intel i7","RAM: 8GB","GPU: GTX 970"],
-cur:[
-"Um dos RPGs mais influentes da história.",
-"O jogo possui milhares de mods criados pela comunidade."
-],
-semelhantes:["The Witcher 3","Elden Ring","Assassin's Creed Valhalla"]
-},
+        .normalize("NFD")
 
+        .replace(/[\u0300-\u036f]/g,"")
 
-{
-nome:"Fortnite",
-nota:"⭐ 9.2 | 2017",
-desc:"Fortnite é um dos battle royale mais populares do mundo. Cem jogadores caem em uma ilha e precisam sobreviver enquanto o mapa diminui. O jogo mistura combate, construção e eventos ao vivo que mudam constantemente o mundo do jogo.",
-capa:"https://i.postimg.cc/4Nr4TFLs/download-(56).jpg",
-banner:"https://i.postimg.cc/rmncZh0B/Banner.jpg",
-trailer:"https://www.youtube.com/embed/KhmeRaZXYyo?si=bX4tgibS7AJoXnnX",
-dicas:[
-"Construa estruturas rapidamente durante combate.",
-"Procure baús para armas melhores.",
-"Use fones para ouvir passos de inimigos.",
-"Fique sempre dentro da zona segura."
-],
-info:[
-"Estúdio: Epic Games",
-"Gênero: Battle Royale",
-"Modo: Multiplayer",
-"Plataformas: PC, PlayStation, Xbox, Switch, Mobile"
-],
-galeria:[
-"https://i.postimg.cc/Hk9L49zY/download-(57).jpg",
-"https://i.postimg.cc/gJnkpFW2/images-(10).jpg",
-"https://i.postimg.cc/tJ6q137q/download-(58).jpg"
-],
-
-musica:"https://files.catbox.moe/2n7t81.mp3",
-musicaNome:"Fortnite - Coral Chorus",
-musicaCapa:"https://i.postimg.cc/zf3VzRwG/download-(64).jpg",
-semelhantes:["Battlefield 6","Halo Infinite","GTA V"]
-},
-
-{
-nome:"Rocket League",
-nota:"⭐ 9.1 | 2015",
-desc:"Rocket League mistura futebol com carros em partidas rápidas e competitivas. Os jogadores usam veículos turbo para marcar gols em arenas futuristas.",
-capa:"https://i.postimg.cc/ZKckw7GM/download-(59).jpg",
-banner:"https://i.postimg.cc/d0gghzCw/2d4ff04aa53cecb77402ca37ab732edfae63ba8ea2b7611259dd3d1910a6b276.avif",
-trailer:"https://www.youtube.com/embed/SgSX3gOrj60",
-dicas:[
-"Treine controle aéreo.",
-"Use boost com estratégia.",
-"Jogue em equipe.",
-"Treine no modo livre."
-],
-info:[
-"Estúdio: Psyonix",
-"Gênero: Esporte",
-"Modo: Multiplayer",
-"Plataformas: PC, PlayStation, Xbox, Switch"
-],
-galeria:[
-"https://i.postimg.cc/VsWHwSK8/download-(60).jpg",
-"https://i.postimg.cc/kgzTsWgy/download-(62).jpg",
-"https://i.postimg.cc/1XmBXHvg/download-(61).jpg"
-],
-musica:"https://files.catbox.moe/3j8kdp.mp3",
-musicaNome:"Rocket League - All I Need",
-musicaCapa:"https://i.postimg.cc/rs448tkd/download-(63).jpg",
-semelhantes:["FIFA 26","Forza Horizon 5","Fortnite"]
-},
-
-{
-nome:"F1 25",
-nota:"⭐ 9.0 | 2025",
-desc:"F1 25 traz a experiência oficial da Fórmula 1 com pilotos, equipes e circuitos reais. O jogo oferece modos de carreira, campeonatos e corridas online competitivas.",
-capa:"https://i.postimg.cc/tgRmY970/download-(65).jpg",
-banner:"https://i.postimg.cc/DzjgYs6W/ss-b0eae3cd7c50e2bd83c4a0c5e2c8fa65ca071209-1920x1080.jpg",
-trailer:"https://www.youtube.com/embed/riRLX8gz9fM?si=NJtkRArHydEyOgYe",
-dicas:[
-"Controle desgaste dos pneus.",
-"Ajuste aerodinâmica.",
-"Treine classificação.",
-"Gerencie combustível."
-],
-info:[
-"Estúdio: Codemasters",
-"Gênero: Corrida",
-"Modo: Singleplayer / Multiplayer",
-"Plataformas: PC, PlayStation, Xbox"
-],
-galeria:[
-"https://i.postimg.cc/3NGtPRff/download-(67).jpg",
-"https://i.postimg.cc/nc8Rq4MK/download-(68).jpg",
-"https://i.postimg.cc/3JgL1kvM/download-(69).jpg"
-],
-musica:"https://files.catbox.moe/zr19za.mp3",
-musicaNome:"F1 25 - F1 Opening",
-musicaCapa:"https://i.postimg.cc/FzXykxGz/download-(70).jpg",
-semelhantes:["Forza Horizon 5","Rocket League","GTA V"]
-},
-
-
-{
-nome:"FIFA 26",
-nota:"⭐ 8.9 | 2026",
-desc:"FIFA 26 continua a popular franquia de futebol com times licenciados, modos online e melhorias na física da bola.",
-capa:"https://i.postimg.cc/5Nnzf1cn/download-(71).jpg",
-banner:"https://i.postimg.cc/dtHhzBdN/766843.webp",
-trailer:"https://www.youtube.com/embed/XhP3Xh4LMA8",
-dicas:[
-"Treine finalizações.",
-"Controle posse de bola.",
-"Use substituições estratégicas.",
-"Ajuste táticas do time."
-],
-info:[
-"Estúdio: EA Sports",
-"Gênero: Esporte / Futebol",
-"Modo: Singleplayer / Multiplayer",
-"Plataformas: PC, PlayStation, Xbox"
-],
-galeria:[
-"https://i.postimg.cc/pXTTYF7T/download-(74).jpg",
-"https://i.postimg.cc/tghCCt1c/download-(72).jpg",
-"https://i.postimg.cc/wMB6VCwC/download-(73).jpg"
-],
-semelhantes:["Rocket League","Forza Horizon 5","Fortnite"]
-},
-
-{
-nome:"Fallout 4",
-nota:"⭐ 9.1 | 2015",
-desc:"Fallout 4 é um RPG de mundo aberto ambientado em um futuro pós-apocalíptico onde você explora cidades destruídas e enfrenta mutantes perigosos.",
-capa:"https://i.postimg.cc/7hbk7g66/download-(75).jpg",
-banner:"https://i.postimg.cc/qMhrvXSX/fallout-4-1920x1080-24489.jpg",
-trailer:"https://www.youtube.com/embed/X5aJfebzkrM",
-dicas:[
-"Explore bunkers para recursos.",
-"Construa assentamentos.",
-"Gerencie munição.",
-"Use armaduras especiais."
-],
-info:[
-"Estúdio: Bethesda",
-"Gênero: RPG / Mundo aberto",
-"Modo: Singleplayer",
-"Plataformas: PC, PlayStation, Xbox"
-],
-galeria:[
-"https://i.postimg.cc/Kz8SSntn/download-(78).jpg",
-"https://i.postimg.cc/x8XwqnxD/download-(77).jpg",
-"https://i.postimg.cc/Fzw2L88p/download-(76).jpg"
-],
-semelhantes:["Skyrim","Cyberpunk 2077","The Witcher 3"]
-},
-
-{
-nome:"Starfield",
-nota:"⭐ 8.8 | 2023",
-desc:"Starfield é um RPG espacial onde o jogador explora sistemas solares inteiros e descobre segredos do universo.",
-capa:"https://i.postimg.cc/cHHj5dNY/download-(79).jpg",
-banner:"https://i.postimg.cc/QNBNF3W9/starfield-pvuq8jqs3z1dzalb.jpg",
-trailer:"https://www.youtube.com/embed/pYqyVpCV-3c",
-dicas:[
-"Melhore sua nave.",
-"Explore planetas diferentes.",
-"Complete missões secundárias.",
-"Gerencie recursos."
-],
-info:[
-"Estúdio: Bethesda",
-"Gênero: RPG espacial",
-"Modo: Singleplayer",
-"Plataformas: PC, Xbox"
-],
-galeria:[
-"https://i.postimg.cc/wBfHBfqQ/download-(82).jpg",
-"https://i.postimg.cc/QM4sM4Nr/download-(81).jpg",
-"https://i.postimg.cc/RF2B7WnV/download-(80).jpg"
-],
-semelhantes:["Cyberpunk 2077","Skyrim","No Man's Sky"]
-},
-
-{
-nome:"Ghost of Tsushima",
-nota:"⭐ 9.4 | 2020",
-desc:"Ghost of Tsushima acompanha um samurai defendendo sua terra contra a invasão mongol no Japão feudal.",
-capa:"https://i.postimg.cc/CL1GBdsJ/download-(83).jpg",
-banner:"https://i.postimg.cc/xjsH2nVT/thumb-1920-1377111.jpg",
-trailer:"https://www.youtube.com/embed/Zbq7BnsQhrw",
-dicas:[
-"Use furtividade para derrotar inimigos.",
-"Melhore armaduras.",
-"Explore o mapa.",
-"Domine diferentes estilos de combate."
-],
-info:[
-"Estúdio: Sucker Punch",
-"Gênero: Ação / Mundo aberto",
-"Modo: Singleplayer",
-"Plataformas: PC, PlayStation"
-],
-galeria:[
-"https://i.postimg.cc/fyFJ0WMH/download-(85).jpg",
-"https://i.postimg.cc/RVkWS0sZ/download-(86).jpg",
-"https://i.postimg.cc/zv9GGdk9/download-(84).jpg"
-],
-semelhantes:["Assassin's Creed Valhalla","God of War","The Witcher 3"]
-},
-
-{
-nome:"No Man's Sky",
-nota:"⭐ 8.7 | 2016",
-desc:"No Man's Sky é um jogo de exploração espacial com bilhões de planetas gerados proceduralmente.",
-capa:"https://i.postimg.cc/0QjkdgWF/download-(87).jpg",
-banner:"https://i.postimg.cc/8zGrd5h3/wallpaper-no-mans-sky-04-1920x1080.jpg",
-trailer:"https://www.youtube.com/embed/nLtmEjqzg7M",
-dicas:[
-"Explore diferentes planetas.",
-"Melhore sua nave.",
-"Construa bases.",
-"Gerencie oxigênio."
-],
-info:[
-"Estúdio: Hello Games",
-"Gênero: Exploração espacial",
-"Modo: Singleplayer / Multiplayer",
-"Plataformas: PC, PlayStation, Xbox"
-],
-galeria:[
-"https://i.postimg.cc/WbLDj3fJ/download-(88).jpg",
-"https://i.postimg.cc/YCthGP7v/download-(89).jpg",
-"https://i.postimg.cc/6Qm3P5vB/download-(90).jpg"
-],
-semelhantes:["Starfield","Subnautica","Minecraft"]
-},
-
-{
-nome:"Metal Gear Solid V",
-nota:"⭐ 9.5 | 2015",
-desc:"Metal Gear Solid V é um jogo de ação stealth em mundo aberto onde o jogador controla Big Boss em missões militares estratégicas.",
-capa:"https://i.postimg.cc/yNt1PQMk/download-(91).jpg",
-banner:"https://i.postimg.cc/pXR2qn6D/263155-Metal-Gear-Solid-V-The-Phantom-Pain-Big-Boss-video-games-Metal-Gear.jpg",
-trailer:"https://www.youtube.com/embed/A9JV0EvCkMI",
-dicas:[
-"Use furtividade sempre que possível.",
-"Marque inimigos com binóculos.",
-"Use o ambiente para se esconder.",
-"Planeje ataques antes de agir."
-],
-info:[
-"Estúdio: Konami",
-"Gênero: Ação / Stealth",
-"Modo: Singleplayer / Online",
-"Plataformas: PC, PlayStation, Xbox"
-],
-galeria:[
-"https://i.postimg.cc/ZR6SLTPg/download-(94).jpg",
-"https://i.postimg.cc/SQ742xxj/download-(93).jpg",
-"https://i.postimg.cc/RZ8x53Xb/download-(92).jpg"
-],
-min:["CPU: Intel i5","RAM: 8GB","GPU: GTX 760"],
-rec:["CPU: Intel i7","RAM: 16GB","GPU: GTX 1060"],
-cur:[
-"Considerado um dos melhores jogos stealth."
-],
-semelhantes:["Far Cry 3","Cyberpunk 2077","GTA V"]
-},
-
-{
-nome:"Baldur's Gate 3",
-nota:"⭐ 9.6 | 2023",
-desc:"Baldur's Gate 3 é um RPG profundo baseado no universo de Dungeons & Dragons. O jogo permite criar seu próprio personagem e embarcar em uma jornada cheia de escolhas que realmente mudam a história. Com combates estratégicos por turno, exploração detalhada e dezenas de possibilidades de diálogo, cada decisão pode alterar completamente o rumo da aventura.",
-capa:"https://i.postimg.cc/d1hyHw8B/download.jpg",
-banner:"https://i.postimg.cc/qvpCf8sr/wallpaper-baldurs-gate-3-01-1920x1080.jpg",
-trailer:"https://www.youtube.com/embed/1T22wNvoNiU",
-  
-info:[
-"Estúdio: Larian Studios",
-"Gênero: RPG / Estratégia",
-"Modo: Singleplayer / Multiplayer",
-"Plataformas: PC, PlayStation, Xbox"
-],
-galeria:[
-"https://i.postimg.cc/BbGnT0NX/download-(95).jpg",
-"https://i.postimg.cc/hPcGhKfm/images-(11).jpg",
-"https://i.postimg.cc/dV0tmnRj/download-(96).jpg"
-],
-semelhantes:["Skyrim","The Witcher 3","Elden Ring"]
-},
-
-{
-nome:"League of Legends",
-nota:"⭐ 9.0 | 2009",
-desc:"League of Legends é um dos jogos competitivos mais populares do mundo. Duas equipes de cinco jogadores lutam para destruir a base inimiga enquanto controlam campeões com habilidades únicas. Estratégia, trabalho em equipe e habilidade são essenciais para vencer.",
-capa:"https://i.postimg.cc/2SJmdYS8/download-(97).jpg",
-banner:"https://i.postimg.cc/ryJknxwQ/dak9q7n-8f73a33e-e290-4792-9f37-11d014ca2e14.png",
-trailer:"https://www.youtube.com/embed/IzMnCv_lPxI",
-
-info:[
-"Estúdio: Riot Games",
-"Gênero: MOBA",
-"Modo: Multiplayer",
-"Plataformas: PC"
-],
-galeria:[
-"https://i.postimg.cc/NfSPpjm9/download-(100).jpg",
-"https://i.postimg.cc/TPq7djSS/download-(99).jpg",
-"https://i.postimg.cc/LXxxf9m0/download-(98).jpg"
-],
-semelhantes:["Valorant","Fortnite","Overwatch 2"]
-},
-
-{
-nome:"Valorant",
-nota:"⭐ 9.1 | 2020",
-desc:"Valorant é um jogo de tiro tático competitivo onde duas equipes se enfrentam em rodadas intensas. Cada personagem possui habilidades únicas que podem mudar completamente o resultado de uma partida.",
-capa:"https://i.postimg.cc/3R2v59ch/download-2026-03-09T175932-474.jpg",
-banner:"https://i.postimg.cc/y8W3Y7G8/wp14056162.jpg",
-trailer:"https://www.youtube.com/embed/e_E9W2vsRbQ",
-
-info:[
-"Estúdio: Riot Games",
-"Gênero: FPS Tático",
-"Modo: Multiplayer",
-"Plataformas: PC"
-],
-galeria:[
-"https://i.postimg.cc/dtVL4qwF/download-2026-03-09T180047-374.jpg",
-"https://i.postimg.cc/k4ygvHHf/download-2026-03-09T180057-265.jpg",
-"https://i.postimg.cc/Z51nbp37/download-2026-03-09T180102-134.jpg"
-],
-semelhantes:["Counter-Strike 2","Rainbow Six Siege","Halo Infinite"]
-},
-
-{
-nome:"Counter-Strike 2",
-nota:"⭐ 9.4 | 2023",
-desc:"Counter-Strike 2 é a evolução do clássico jogo de tiro competitivo. Terroristas e contra-terroristas se enfrentam em partidas estratégicas onde precisão e trabalho em equipe são fundamentais.",
-capa:"https://i.postimg.cc/bYbKWbYm/download-2026-03-09T180955-120.jpg",
-banner:"https://i.postimg.cc/XYNmrzft/2d80e-16795037979677-1920.webp",
-trailer:"https://www.youtube.com/embed/c80dVYcL69E",
-
-info:[
-"Estúdio: Valve",
-"Gênero: FPS",
-"Modo: Multiplayer",
-"Plataformas: PC"
-],
-galeria:[
-"https://i.postimg.cc/4yb2d6mk/download-2026-03-09T181125-509.jpg",
-"https://i.postimg.cc/0jdXQYbK/download-2026-03-09T181119-259.jpg",
-"https://i.postimg.cc/CMjQmgm5/download-2026-03-09T181105-241.jpg"
-],
-semelhantes:["Valorant","Rainbow Six Siege","Battlefield 6"]
-},
-
-{
-nome:"PUBG Battlegrounds",
-nota:"⭐ 8.9 | 2017",
-desc:"PUBG é um dos pioneiros do gênero battle royale moderno. Cem jogadores caem em uma ilha e precisam encontrar armas e equipamentos enquanto lutam para ser o último sobrevivente.",
-capa:"https://i.postimg.cc/2SXcV888/download-2026-03-09T181235-205.jpg",
-banner:"https://i.postimg.cc/59qs8m21/pubg-battlegrounds-16v1j.jpg",
-trailer:"https://www.youtube.com/embed/u1oqfdh4xBY",
-
-info:[
-"Estúdio: PUBG Studios",
-"Gênero: Battle Royale",
-"Modo: Multiplayer",
-"Plataformas: PC, PlayStation, Xbox"
-],
-galeria:[
-"https://i.postimg.cc/nrHY36hb/download-2026-03-09T181453-481.jpg",
-"https://i.postimg.cc/XqVcsTYC/download-2026-03-09T181447-326.jpg",
-"https://i.postimg.cc/8kHb7PZ5/download-2026-03-09T181439-268.jpg"
-],
-semelhantes:["Fortnite","Apex Legends","Battlefield 6"]
-},
-
-{
-nome:"Overwatch 2",
-nota:"⭐ 8.8 | 2022",
-desc:"Overwatch 2 é um shooter competitivo em equipes onde cada herói possui habilidades únicas. O jogo mistura ação rápida com estratégia e cooperação entre jogadores.",
-capa:"https://i.postimg.cc/0NRStLVt/download-2026-03-09T181745-648.jpg",
-banner:"https://i.postimg.cc/7hfbPVBV/Overwatch-2.jpg",
-trailer:"https://www.youtube.com/embed/GKXS_YA9s7E",
-
-info:[
-"Estúdio: Blizzard",
-"Gênero: FPS / Hero Shooter",
-"Modo: Multiplayer",
-"Plataformas: PC, PlayStation, Xbox, Switch"
-],
-galeria:[
-"https://i.postimg.cc/XvrVCJK4/images-(13).jpg",
-"https://i.postimg.cc/DZsnxMYR/images-(12).jpg",
-"https://i.postimg.cc/hv1gB7nh/overwatch-2-pvp-beta-screenshots-v72h.png"
-],
-semelhantes:["Valorant","Halo Infinite","Fortnite"]
-},
-
-{
-nome:"Diablo IV",
-nota:"⭐ 9.0 | 2023",
-desc:"Diablo IV é um RPG de ação sombrio onde jogadores enfrentam hordas de demônios enquanto exploram um mundo aberto cheio de masmorras e loot poderoso.",
-capa:"https://i.postimg.cc/GtdwqhDs/download-2026-03-09T182736-176.jpg",
-banner:"https://i.postimg.cc/T2JXhg8m/diablo-iv-playstation-5-art-banner.jpg",
-trailer:"https://www.youtube.com/embed/0SSYzl9fXOQ",
-
-info:[
-"Estúdio: Blizzard",
-"Gênero: RPG / Ação",
-"Modo: Singleplayer / Multiplayer",
-"Plataformas: PC, PlayStation, Xbox"
-],
-galeria:[
-"https://i.postimg.cc/Pf4BdHZ2/download-2026-03-09T182947-427.jpg",
-"https://i.postimg.cc/hPZ6702n/download-2026-03-09T182942-453.jpg",
-"https://i.postimg.cc/zX26RkxK/download-2026-03-09T182938-394.jpg"
-],
-semelhantes:["Skyrim","The Witcher 3","Baldur's Gate 3"]
-},
-
-{
-nome:"Apex Legends",
-nota:"⭐ 9.1 | 2019",
-desc:"Apex Legends é um battle royale focado em equipes de três jogadores com personagens únicos e habilidades especiais.",
-capa:"https://i.postimg.cc/VsDH3RQg/download-2026-03-09T183108-341.jpg",
-banner:"https://i.postimg.cc/qvCb6Hhk/images-(14).jpg",
-trailer:"https://www.youtube.com/embed/innmNewjkuk",
-
-info:[
-"Estúdio: Respawn",
-"Gênero: Battle Royale / FPS",
-"Modo: Multiplayer",
-"Plataformas: PC, PlayStation, Xbox, Switch"
-],
-galeria:[
-"https://i.postimg.cc/L8fD6k7v/download-2026-03-09T183232-106.jpg",
-"https://i.postimg.cc/QM3bB9ZF/images-(15).jpg",
-"https://i.postimg.cc/zBDFjsBN/download-2026-03-09T183223-039.jpg"
-],
-semelhantes:["Fortnite","PUBG Battlegrounds","Halo Infinite"]
-},
-
-{
-nome:"Terraria",
-nota:"⭐ 9.2 | 2011",
-desc:"Terraria é um jogo sandbox de exploração e construção em 2D onde o jogador coleta recursos, cria equipamentos e enfrenta chefes poderosos.",
-capa:"https://i.postimg.cc/sDG9w9V3/download-2026-03-09T183445-312.jpg",
-banner:"https://i.postimg.cc/1tYwK426/imagens-de-terraria-9jnp0hmkf1tqc0l2.jpg",
-trailer:"https://www.youtube.com/embed/w7uOhFTrrq0",
-
-info:[
-"Estúdio: Re-Logic",
-"Gênero: Sandbox / Aventura",
-"Modo: Singleplayer / Multiplayer",
-"Plataformas: PC, PlayStation, Xbox, Switch, Mobile"
-],
-galeria:[
-"https://i.postimg.cc/bJd2dprS/images-(16).jpg",
-"https://i.postimg.cc/wBwWRXc8/download-2026-03-09T183658-412.jpg",
-"https://i.postimg.cc/L51vWGcy/download-2026-03-09T183653-058.jpg"
-],
-semelhantes:["Minecraft","Subnautica","No Man's Sky"]
-},
-
-{
-nome:"Dead by Daylight",
-nota:"⭐ 8.7 | 2016",
-desc:"Dead by Daylight é um jogo multiplayer de terror onde um jogador controla o assassino enquanto quatro sobreviventes tentam escapar.",
-capa:"https://i.postimg.cc/Y2ZnBSZD/download-(2).jpg",
-banner:"https://i.postimg.cc/GhvQ0xkM/thumb-1920-778923.jpg",
-trailer:"https://www.youtube.com/embed/JGhIXLO3ul8",
-dicas:[
-"Trabalhe em equipe para reparar geradores.",
-"Fique atento ao som do assassino.",
-"Use vantagens estratégicas."
-],
-info:[
-"Estúdio: Behaviour Interactive",
-"Gênero: Terror / Multiplayer",
-"Modo: Multiplayer",
-"Plataformas: PC, PlayStation, Xbox, Switch"
-],
-galeria:[
-"https://i.postimg.cc/4y6h0wr7/images.jpg",
-"https://i.postimg.cc/02CwdWYh/download-(4).jpg",
-"https://i.postimg.cc/yN2gYwK6/download-(3).jpg"
-],
-min:["CPU: Intel i3","RAM: 8GB","GPU: GTX 760"],
-rec:["CPU: Intel i7","RAM: 16GB","GPU: GTX 1060"],
-cur:[
-"O jogo possui assassinos de várias franquias de terror."
-],
-semelhantes:["Resident Evil 4","The Last of Us","Halo Infinite"]
-},
-
-
-]
-
-let lista=document.getElementById("listaJogos")
-
-jogos.forEach(j=>{
-
-let card=document.createElement("div")
-card.className="card"
-
-card.innerHTML=`
-<img src="${j.capa}">
-<h3>${j.nome}</h3>
-<p>${j.nota}</p>
-`
-
-card.onclick=()=>abrir(j)
-
-lista.appendChild(card)
-
-})
-
-function abrir(j){
-
-window.scrollTo(0,0)
-  
-document.querySelector(".grid").style.display="none"
-paginaJogo.style.display="block"
-barraPesquisa.style.display="none"
-
-imgJogo.src=j.banner
-nomeJogo.innerText=j.nome
-notaJogo.innerText=j.nota
-descJogo.innerText=j.desc
-trailerJogo.src=j.trailer
-
-if(j.musica){
-
-document.querySelector(".player").style.display="flex"
-
-musicaJogo.src=j.musica
-musicaJogo.play()
-
-capaMusica.src=j.musicaCapa
-nomeMusica.innerText=j.musicaNome
-
-}else{
-
-document.querySelector(".player").style.display="none"
-
-musicaJogo.pause()
-musicaJogo.src=""
-
-capaMusica.src=""
-nomeMusica.innerText=""
-
-}
-infoJogo.innerHTML=""
-galeriaJogo.innerHTML=""
-semelhantes.innerHTML=""
-
-j.info.forEach(d=>infoJogo.innerHTML+=`<li>${d}</li>`)
-
-
-j.galeria.forEach(img=>{
-galeriaJogo.innerHTML+=`<img src="${img}">`
-})
-
-j.semelhantes.forEach(nome=>{
-
-let jogo=jogos.find(x=>x.nome===nome)
-
-if(jogo){
-
-let card=document.createElement("div")
-card.className="card"
-
-card.innerHTML=`
-<img src="${jogo.capa}">
-<h3>${jogo.nome}</h3>
-<p>${jogo.nota}</p>
-`
-
-card.onclick=()=>abrir(jogo)
-
-semelhantes.appendChild(card)
+        .toLowerCase();
 
 }
 
-})
+
+/* =========================================
+   AUTOCOMPLETE
+========================================= */
+
+function buscarCidade(campo) {
+
+    const input =
+        document.getElementById(campo + "-input");
+
+    const lista =
+        document.getElementById(
+            "sugestoes-" + campo
+        );
+
+
+    const texto =
+        normalizar(
+            input.value.trim()
+        );
+
+
+    lista.innerHTML = "";
+
+
+    if(texto.length < 2) {
+
+        lista.style.display = "none";
+
+        return;
+
+    }
+
+
+    const resultados =
+        cidades
+
+        .filter(cidade => {
+
+            return (
+
+                normalizar(cidade[0])
+                    .includes(texto)
+
+                ||
+
+                normalizar(cidade[1])
+                    .includes(texto)
+
+            );
+
+        })
+
+        .slice(0,6);
+
+
+    if(resultados.length === 0) {
+
+        lista.style.display = "none";
+
+        return;
+
+    }
+
+
+    resultados.forEach(cidade => {
+
+        const item =
+            document.createElement("div");
+
+
+        item.className =
+            "cidade";
+
+
+        item.innerHTML = `
+
+            <span>📍</span>
+
+            <div class="cidade-info">
+
+                <div class="cidade-nome">
+                    ${cidade[0]}
+                </div>
+
+                <div class="cidade-estado">
+                    ${cidade[1]}
+                </div>
+
+            </div>
+
+        `;
+
+
+        item.onclick = function() {
+
+            input.value =
+                cidade[0] + " - " + cidade[1];
+
+            lista.style.display = "none";
+
+        };
+
+
+        lista.appendChild(item);
+
+    });
+
+
+    lista.style.display = "block";
 
 }
 
-function voltar(){
-document.querySelector(".grid").style.display="grid"
-paginaJogo.style.display="none"
-barraPesquisa.style.display="block"
-musicaJogo.pause()
-musicaJogo.currentTime=0
 
-window.scrollTo(0,0)
-}
+/* =========================================
+   DESTINOS RÁPIDOS
+========================================= */
 
-function buscar(texto){
+function selecionarDestino(cidade) {
 
-texto=texto.toLowerCase()
-
-document.querySelectorAll(".card").forEach(c=>{
-c.style.display=c.innerText.toLowerCase().includes(texto)?"block":"none"
-})
+    document.getElementById(
+        "destino-input"
+    ).value = cidade;
 
 }
 
-let musica=document.getElementById("musicaJogo")
 
-function toggleMusica(){
+/* =========================================
+   CONTINUAR
+========================================= */
 
-if(musica.paused){
-musica.play()
-}else{
-musica.pause()
+function continuar() {
+
+    const origem =
+        document.getElementById(
+            "origem-input"
+        ).value.trim();
+
+
+    const destino =
+        document.getElementById(
+            "destino-input"
+        ).value.trim();
+
+
+    const erro =
+        document.getElementById("erro");
+
+
+    if(origem === "" || destino === "") {
+
+        erro.style.display = "block";
+
+        return;
+
+    }
+
+
+    erro.style.display = "none";
+
+
+    /* Coloca os dados na segunda página */
+
+    document.getElementById(
+        "origem-escolhida"
+    ).textContent = origem;
+
+
+    document.getElementById(
+        "destino-escolhido"
+    ).textContent = destino;
+
+
+    /* Troca de página */
+
+    document.getElementById(
+        "pagina-inicial"
+    ).style.display = "none";
+
+
+    document.getElementById(
+        "pagina-voos"
+    ).style.display = "block";
+
+
+    /* Volta para o topo */
+
+    window.scrollTo(0,0);
+
 }
 
-}
 
-musica.ontimeupdate=function(){
+/* =========================================
+   VOLTAR
+========================================= */
 
-let porcentagem=(musica.currentTime/musica.duration)*100
+function voltarInicio() {
 
-progressoMusica.style.width=porcentagem+"%"
-bolinha.style.left=porcentagem+"%"
+    document.getElementById(
+        "pagina-voos"
+    ).style.display = "none";
 
-}
 
-function mudarTempo(e){
+    document.getElementById(
+        "pagina-inicial"
+    ).style.display = "block";
 
-let barra=e.currentTarget
-let largura=barra.clientWidth
-let clique=e.offsetX
 
-let porcentagem=clique/largura
-
-musica.currentTime=porcentagem*musica.duration
+    window.scrollTo(0,0);
 
 }
-  
+
+
+/* =========================================
+   ESCOLHER VOO
+========================================= */
+
+function escolherVoo(
+    companhia,
+    saida,
+    chegada,
+    preco
+) {
+
+    alert(
+
+        "✈️ VOO SELECIONADO\n\n" +
+
+        "Companhia: " +
+        companhia +
+
+        "\nSaída: " +
+        saida +
+
+        "\nChegada: " +
+        chegada +
+
+        "\nPreço: " +
+        preco
+
+    );
+
+}
+
+
+/* =========================================
+   FECHAR AUTOCOMPLETE
+========================================= */
+
+document.addEventListener(
+    "click",
+    function(event) {
+
+        if(
+            !event.target.closest(".campo")
+        ) {
+
+            document
+                .querySelectorAll(
+                    ".sugestoes-cidades"
+                )
+                .forEach(lista => {
+
+                    lista.style.display =
+                        "none";
+
+                });
+
+        }
+
+    }
+);
+
 </script>
 
+
 </body>
+
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+```
